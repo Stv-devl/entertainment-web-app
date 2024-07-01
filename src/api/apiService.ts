@@ -1,21 +1,39 @@
-import { Media } from '../types/type';
+import { Media, Users } from '../types/types';
+
+/**
+ * fetchData function
+ * Fetches data from a given URL and returns the JSON response. Throws an error if the fetch operation fails.
+ * @async
+ * @param {string} url - The URL to fetch data from.
+ * @returns {Promise<any>} - The JSON data fetched from the API.
+ * @throws {Error} - If the response is not ok.
+ */
+const fetchData = async (url: string): Promise<any> => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(
+      `Error fetching data from ${url}. Status: ${response.status}`
+    );
+  }
+  return response.json();
+};
 
 /**
  * apiService function
- * Fetches data from the API and returns it. Logs an error if the fetch operation fails.
+ * Fetches data from both API endpoints and returns them. Logs an error if any fetch operation fails.
  * @async
- * @returns {Promise<Media[]>} - The data fetched from the API.
- * @throws {Error} - If the response is not ok or if there is a problem with the fetch operation.
+ * @returns {Promise<{ media: Media[], users: Users[] }>} - The data fetched from the APIs.
+ * @throws {Error} - If no response, there is a problem with any fetch operation.
  */
-const apiService = async (): Promise<Media[]> => {
+const apiService = async (): Promise<{ media: Media[]; users: Users[] }> => {
   try {
-    const response = await fetch('/data/data.json'); // Utilisez une URL relative pour accéder aux fichiers dans le dossier public
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data: Media[] = await response.json();
-    return data;
-  } catch (error) {
+    const [mediaData, usersData] = await Promise.all([
+      fetchData('/data/data.json'),
+      fetchData('/data/user.json'),
+    ]);
+
+    return { media: mediaData, users: usersData };
+  } catch (error: unknown) {
     console.error('There has been a problem with your fetch operation:', error);
     throw error;
   }

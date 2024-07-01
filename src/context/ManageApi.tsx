@@ -2,7 +2,7 @@
 
 import { createContext, useState, useEffect, ReactNode } from 'react';
 import apiService from '../api/apiService';
-import { ApiContextType, Media } from '../types/type';
+import { Media, Users, ApiContextType } from '../types/types';
 
 export const ApiContext = createContext<ApiContextType | undefined>(undefined);
 
@@ -19,7 +19,8 @@ interface ApiProviderProps {
  */
 
 function ApiProvider({ children }: ApiProviderProps): JSX.Element {
-  const [data, setData] = useState<Media[]>([]);
+  const [media, setMedia] = useState<Media[]>([]);
+  const [users, setUsers] = useState<Users[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -27,8 +28,9 @@ function ApiProvider({ children }: ApiProviderProps): JSX.Element {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const resData = await apiService();
-        setData(resData);
+        const { media: resMedia, users: resUsers } = await apiService();
+        setMedia(resMedia);
+        setUsers(resUsers);
       } catch (err) {
         console.error('Error fetching data:', err);
         setError(err as Error);
@@ -41,7 +43,9 @@ function ApiProvider({ children }: ApiProviderProps): JSX.Element {
   }, []);
 
   return (
-    <ApiContext.Provider value={{ data, loading, error }}>
+    <ApiContext.Provider
+      value={{ mediadata: media, userdata: users, loading, error }}
+    >
       {children}
     </ApiContext.Provider>
   );
