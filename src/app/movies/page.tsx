@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Movies = () => {
-    return (
-        <div>
-            <h1>Movies</h1>
-        </div>
-    );
+const Movies = (): JSX.Element => {
+  return (
+    <div>
+      <h1>Movies</h1>
+    </div>
+  );
 };
 
-export default Movies ;
+export default Movies;
