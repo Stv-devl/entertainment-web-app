@@ -2,7 +2,7 @@
 
 import { useContext } from 'react';
 import { ApiContext } from '../context/ManageApi';
-import { ApiContextType } from '../types/types';
+import { ApiContextType } from '../../src/types/types';
 
 /**
  * useApiData hook

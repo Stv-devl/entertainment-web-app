@@ -1,4 +1,4 @@
-import { Media, Users } from '../types/types';
+import { Media, Users } from '../../types/types';
 
 /**
  * fetchData function
@@ -28,8 +28,8 @@ const fetchData = async (url: string): Promise<any> => {
 const apiService = async (): Promise<{ media: Media[]; users: Users[] }> => {
   try {
     const [mediaData, usersData] = await Promise.all([
-      fetchData('/data/data.json'),
-      fetchData('/data/user.json'),
+      fetchData('http://localhost:3000/api/user'),
+      fetchData('http://localhost:3000/api/data'),
     ]);
 
     return { media: mediaData, users: usersData };

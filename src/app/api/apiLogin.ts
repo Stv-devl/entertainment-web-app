@@ -1,4 +1,4 @@
-import { Users } from '../types/types';
+import { Users } from '../../types/types';
 
 /**
  * apiLogin to authenticate a user.
@@ -11,7 +11,7 @@ import { Users } from '../types/types';
 
 const apiLogin = async (email: string, password: string): Promise<Users> => {
   try {
-    const response = await fetch('/api/login', {
+    const response = await fetch('http://localhost:3000/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

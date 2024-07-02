@@ -1,8 +1,8 @@
 'use client';
 
 import { createContext, useState, useEffect, ReactNode } from 'react';
-import apiService from '../api/apiService';
-import { Media, Users, ApiContextType } from '../types/types';
+import apiService from '../app/api/apiService';
+import { Media, Users, ApiContextType } from '../../src/types/types';
 
 export const ApiContext = createContext<ApiContextType | undefined>(undefined);
 
