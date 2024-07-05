@@ -1,5 +1,4 @@
 import Banner from '../component/banner/Banner';
-import ApiProvider from '../../backup/context/ManageApi';
 
 export const metadata = {
   title: 'Next.js',
@@ -18,10 +17,8 @@ export default function RootLayout({
         <meta name="description" content={metadata.description} />
       </head>
       <body>
-        <ApiProvider>
-          <Banner />
-          {children}
-        </ApiProvider>
+        <Banner />
+        {children}
       </body>
     </html>
   );

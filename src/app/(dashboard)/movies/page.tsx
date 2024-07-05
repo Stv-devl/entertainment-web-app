@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import withAuth from '../../../component/withAuth/WithAuth';
 
 const Movies = (): JSX.Element => {
   return (
@@ -8,4 +11,4 @@ const Movies = (): JSX.Element => {
   );
 };
 
-export default Movies;
+export default withAuth(Movies);

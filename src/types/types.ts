@@ -21,7 +21,6 @@ export interface Users {
   username: string;
   email: string;
   password: string;
-  image: string;
   id: string;
 }
 

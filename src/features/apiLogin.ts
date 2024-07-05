@@ -1,5 +1,3 @@
-import { Users } from '../../types/types';
-
 /**
  * apiLogin to authenticate a user.
  * Sends a POST request to the server with the user's credentials.
@@ -9,9 +7,9 @@ import { Users } from '../../types/types';
  * @throws {Error} - Throws an error if the login request fails or if the response status is not 200.
  */
 
-const apiLogin = async (email: string, password: string): Promise<Users> => {
+const apiLogin = async (email: string, password: string): Promise<string> => {
   try {
-    const response = await fetch('http://localhost:3000/api/users', {
+    const response = await fetch('http://localhost:3000/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +20,7 @@ const apiLogin = async (email: string, password: string): Promise<Users> => {
     if (response.ok) {
       console.log('Login successful');
       const data = await response.json();
-      return data;
+      return data.token;
     } else {
       console.error('Login failed with status', response.status);
       throw new Error('Login failed');

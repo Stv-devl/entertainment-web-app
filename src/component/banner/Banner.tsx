@@ -1,7 +1,23 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
+import useAuthStore from '../../stores/useAuthStore';
+import useIsAuthenticated from '../../hook/auth/useIsAuthenticated';
+import { useLogout } from '@/hook/auth/useLogout';
 
 const Banner = () => {
+  const { token } = useAuthStore((state) => ({
+    token: state.token,
+  }));
+
+  const { isAuthenticated, setIsAuthenticated } = useIsAuthenticated();
+  const logout = useLogout();
+
+  const handleLogout = () => {
+    logout(setIsAuthenticated);
+  };
+
   return (
     <nav>
       <div className="icon-wrapper">
@@ -47,6 +63,9 @@ const Banner = () => {
           height={50}
         />
       </div>
+      {token || isAuthenticated ? (
+        <button onClick={handleLogout}>Logout</button>
+      ) : null}
     </nav>
   );
 };
