@@ -8,6 +8,7 @@ const useLogin = () => {
   const [password, setPassword] = useState<string>('');
 
   const login = useAuthStore((state) => state.login);
+  const setUserId = useAuthStore((state) => state.setUserId);
   const router = useRouter();
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,8 +22,9 @@ const useLogin = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const token = await apiLogin(email, password);
+      const { token, userId } = await apiLogin(email, password);
       login(token);
+      setUserId(userId);
       router.push('/home');
     } catch (error) {
       console.error('Login failed:', error);

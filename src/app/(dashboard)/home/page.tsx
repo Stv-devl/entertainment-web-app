@@ -2,16 +2,17 @@
 
 import React from 'react';
 import withAuth from '../../../component/withAuth/WithAuth';
-import useMediaData from '@/hook/dataSync/useDataMedia';
+import useFitlerWithId from '@/hook/dataSync/useFitlerWithId';
 
 const Home = () => {
-  const { media, users, loading, error } = useMediaData();
+  const { media, user, bookmarked, loading, error } = useFitlerWithId();
+
+  console.log('media', media);
+  console.log('user', user);
+  console.log('bookmarked', bookmarked);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-
-  console.log('media data', media);
-  console.log('user data', users);
 
   return (
     <div>

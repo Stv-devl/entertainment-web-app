@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Media, Users } from '../../types/types';
-import apiService from '../../features/apiService';
+'use client';
 
-const useMediaData = () => {
-  const [media, setMedia] = useState<Media[]>([]);
+import { useState, useEffect } from 'react';
+import { Media, MediaDataType, Users } from '../../types/types';
+import apiService from '../../features/apiDatas';
+
+const useMediaData = (): MediaDataType => {
   const [users, setUsers] = useState<Users[]>([]);
+  const [media, setMedia] = useState<Media[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 

@@ -10,7 +10,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const newUser = await request.json();
 
-  user.users.push(newUser);
+  user.push(newUser);
 
   const filePath = path.join(process.cwd(), 'data', 'user.json');
 

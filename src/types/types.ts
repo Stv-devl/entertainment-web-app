@@ -22,11 +22,12 @@ export interface Users {
   email: string;
   password: string;
   id: string;
+  bookmarkedItems: string[];
 }
 
-export interface ApiContextType {
-  userdata: Users[];
-  mediadata: Media[];
+export interface MediaDataType {
+  media: Media[];
+  users: Users[];
   loading: boolean;
-  error: Error | null;
+  error: string | null;
 }
