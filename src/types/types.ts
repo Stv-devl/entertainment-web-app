@@ -31,3 +31,9 @@ export interface MediaDataType {
   loading: boolean;
   error: string | null;
 }
+
+export interface FormData {
+  email: string;
+  password: string;
+  error?: string;
+}

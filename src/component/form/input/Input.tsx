@@ -1,37 +1,49 @@
+import { ChangeEvent } from 'react';
+
+export interface InputProps {
+  name: string;
+  labelText: string;
+  type: string;
+  handleChange: (updates: { [key: string]: string }) => void;
+  value: string;
+  error?: string;
+}
+
 /**
  * Input component
  * Renders an input with a label and an optional error message.
- * @param {string} name - The name of the input.
- * @param {string} labelText - The label text of the the input .
- * @param {function} handleChange - The function to handle changes the input.
- * @param {string} value - The current value of the input.
- * @param {string} [error] - An optional error message to display if there is an error.
- * @returns {JSX.Element} - The input component.
+ * @param props - The props object for the Input component.
+ * @returns The input component.
  */
 
-const Input = (
-  {
-    /*name, labelText, handleChange, value, error*/
-  }
-) => {
-  return {
-    /*}
+const Input: React.FC<InputProps> = ({
+  name,
+  labelText,
+  type,
+  handleChange,
+  value,
+  error,
+}: InputProps) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    handleChange({ [name]: e.target.value });
+  };
+
+  return (
     <div className="input-wrapper">
       <label className="label" htmlFor={name}>
         {labelText}
       </label>
       <input
         className="form-input"
-        type="text"
+        type={type}
         id={name}
         name={name}
         value={value}
-        onChange={(e) => handleChange({ [name]: e.target.value })}
+        onChange={onChange}
       />
-      {error && <span className="error-message">{error}</span>}
+      {/*} {error && <span className="error-message">{error}</span>}*/}
     </div>
-    */
-  };
+  );
 };
 
 export default Input;

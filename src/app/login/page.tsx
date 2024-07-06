@@ -2,6 +2,7 @@
 
 import React from 'react';
 import useLogin from '../../hook/auth/useLogin';
+import Input from '@/component/form/input/Input';
 
 /**
  * Login component
@@ -11,7 +12,7 @@ import useLogin from '../../hook/auth/useLogin';
  */
 
 const Login = (): JSX.Element => {
-  const { handleSubmit, handleEmailChange, handlePasswordChange } = useLogin();
+  const { handleSubmit, handleChange, formData } = useLogin();
 
   return (
     <main className="main bg-dark">
@@ -20,21 +21,23 @@ const Login = (): JSX.Element => {
         <h1>Sign In</h1>
         <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              id="email"
+            <Input
               name="email"
-              onChange={handleEmailChange}
+              labelText="Email"
+              type="text"
+              handleChange={handleChange}
+              value={formData.email}
+              //error={error.email}
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
+            <Input
               name="password"
-              onChange={handlePasswordChange}
+              labelText="password"
+              type="password"
+              handleChange={handleChange}
+              value={formData.password}
+              // error={error.password}
             />
           </div>
           <button type="submit" className="sign-in-button">
