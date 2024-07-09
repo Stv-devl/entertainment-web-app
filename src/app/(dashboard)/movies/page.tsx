@@ -7,23 +7,33 @@ import Loading from '@/component/loading/Loading';
 import Error from '@/component/error/Error';
 import Cards from '@/component/cards/Cards';
 import { getCategories } from '@/utils/filterByCategory';
-import SearchWrapper from '@/component/form/search/SearchWrapper';
+import useManageFilter from '@/hook/dataSync/useFilterMedias';
+import Search from '@/component/form/search/Search';
+import CardsWrapper from '@/component/cards/CardsWrapper';
 
 const Movies = () => {
   const { media, loading, error } = useFitlerWithId();
 
+  const moviesData = getCategories(media, 'Movie');
+
+  const { searchBar, filteredData, handleChange, isSearching } =
+    useManageFilter({
+      moviesData,
+    });
+
   if (loading) return <Loading />;
   if (error) return <Error />;
 
-  const moviesData = getCategories(media, 'Movie');
-
   return (
-    <SearchWrapper>
-      <main>
-        <h1>Movies</h1>
-        <Cards data={moviesData} />
-      </main>
-    </SearchWrapper>
+    <main>
+      <Search searchBar={searchBar} handleChange={handleChange} />
+      <CardsWrapper
+        isSearching={isSearching}
+        filteredData={filteredData}
+        datas={moviesData}
+        title={'Movies'}
+      />
+    </main>
   );
 };
 

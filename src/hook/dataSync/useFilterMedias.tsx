@@ -4,7 +4,9 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Media } from '@/types/types';
 
 interface UseManageFilterProps {
-  media: Media[];
+  media?: Media[];
+  seriesData?: Media[];
+  moviesData?: Media[];
 }
 
 interface UseManageFilterReturn {
@@ -16,9 +18,15 @@ interface UseManageFilterReturn {
 
 const useManageFilter = ({
   media,
+  seriesData,
+  moviesData,
 }: UseManageFilterProps): UseManageFilterReturn => {
   const [searchBar, setSearchBar] = useState<string>('');
   const [isSearching, setIsSearching] = useState<boolean>(false);
+
+  const activeDatas = media || seriesData || moviesData || [];
+
+  console.log(activeDatas);
 
   useEffect(() => {
     if (searchBar.trim() === '') {
@@ -30,16 +38,19 @@ const useManageFilter = ({
 
   const filteredData = useMemo(() => {
     if (searchBar.trim() === '') {
-      return media;
+      return activeDatas;
     }
-    return media.filter((el) =>
-      Object.values(el).some(
-        (value) =>
-          typeof value === 'string' &&
-          value.toLowerCase().includes(searchBar.toLowerCase())
+    return (
+      activeDatas &&
+      activeDatas.filter((el) =>
+        Object.values(el).some(
+          (value) =>
+            typeof value === 'string' &&
+            value.toLowerCase().includes(searchBar.toLowerCase())
+        )
       )
     );
-  }, [media, searchBar]);
+  }, [activeDatas, searchBar]);
 
   const handleChange = useCallback((updates: { [key: string]: string }) => {
     setSearchBar(updates.search);

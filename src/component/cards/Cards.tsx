@@ -12,7 +12,7 @@ const Cards: React.FC<CardsProps> = ({ data }) => {
         data.map((data, index) => (
           <div className="card-wrapper" key={`trendingd${index}`}>
             <div>icone</div>
-            {data.thumbnail?.trending && (
+            {data.thumbnail?.regular && (
               <picture>
                 <source
                   srcSet={data.thumbnail.regular.large}

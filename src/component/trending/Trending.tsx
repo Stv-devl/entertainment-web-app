@@ -1,14 +1,9 @@
 import React from 'react';
 import { Media } from '@/types/types';
-import Cards from '../cards/Cards';
 import TrendingCards from '../cards/TrendingCards';
 
 interface TrendingProps {
   bookmarked: Media[];
-}
-
-interface TrendingDataProps {
-  data: Media[];
 }
 
 const Trending: React.FC<TrendingProps> = ({ bookmarked }) => {
@@ -16,6 +11,7 @@ const Trending: React.FC<TrendingProps> = ({ bookmarked }) => {
 
   return (
     <div className="trending-container">
+      <h1>Trending</h1>
       <TrendingCards data={bookmarked} />
     </div>
   );

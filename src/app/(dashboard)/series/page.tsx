@@ -7,22 +7,34 @@ import Loading from '@/component/loading/Loading';
 import Error from '@/component/error/Error';
 import { getCategories } from '@/utils/filterByCategory';
 import Cards from '@/component/cards/Cards';
-import SearchWrapper from '@/component/form/search/SearchWrapper';
+
+import Search from '@/component/form/search/Search';
+import useManageFilter from '@/hook/dataSync/useFilterMedias';
+import CardsWrapper from '@/component/cards/CardsWrapper';
 
 const Series = () => {
   const { media, loading, error } = useFitlerWithId();
 
+  const seriesData = getCategories(media, 'TV Series');
+
+  const { searchBar, filteredData, handleChange, isSearching } =
+    useManageFilter({
+      seriesData,
+    });
+
   if (loading) return <Loading />;
   if (error) return <Error />;
 
-  const seriesData = getCategories(media, 'TV Series');
   return (
-    <SearchWrapper>
-      <main>
-        <h1>Series</h1>
-        <Cards data={seriesData} />
-      </main>
-    </SearchWrapper>
+    <main>
+      <Search searchBar={searchBar} handleChange={handleChange} />
+      <CardsWrapper
+        isSearching={isSearching}
+        filteredData={filteredData}
+        datas={seriesData}
+        title={'Tv series'}
+      />
+    </main>
   );
 };
 

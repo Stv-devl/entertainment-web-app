@@ -7,10 +7,9 @@ interface RecommendedProps {
 }
 
 const Recommended: React.FC<RecommendedProps> = ({ media }) => {
-  /*console.log(media);*/
-
   return (
-    <div className="trending-container">
+    <div className="Recommended-container">
+      <h1>Recommended</h1>
       <Cards data={media} />
     </div>
   );

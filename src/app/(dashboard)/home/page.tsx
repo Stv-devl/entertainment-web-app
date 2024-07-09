@@ -7,7 +7,9 @@ import Trending from '@/component/trending/Trending';
 import Recommended from '../../../component/recommended/Recommended';
 import Loading from '@/component/loading/Loading';
 import Error from '@/component/error/Error';
-import SearchWrapper from '@/component/form/search/SearchWrapper';
+import Search from '../../../component/form/search/Search';
+import useManageFilter from '@/hook/dataSync/useFilterMedias';
+import Cards from '@/component/cards/Cards';
 import { Media } from '@/types/types';
 
 interface UseFilterWithIdReturn {
@@ -20,16 +22,28 @@ const Home = () => {
   const { media, bookmarked, loading, error }: UseFilterWithIdReturn =
     useFitlerWithId();
 
+  const { searchBar, filteredData, handleChange, isSearching } =
+    useManageFilter({
+      media,
+    });
+
   if (loading) return <Loading />;
   if (error) return <Error />;
 
   return (
-    <SearchWrapper>
-      <main>
-        <Trending bookmarked={bookmarked} />
-        <Recommended media={media} />
-      </main>
-    </SearchWrapper>
+    <main>
+      <Search searchBar={searchBar} handleChange={handleChange} />
+      <>
+        {isSearching ? (
+          <Cards data={filteredData} />
+        ) : (
+          <div className="page-container">
+            <Trending bookmarked={bookmarked} />
+            <Recommended media={media} />
+          </div>
+        )}
+      </>
+    </main>
   );
 };
 export default withAuth(Home);
