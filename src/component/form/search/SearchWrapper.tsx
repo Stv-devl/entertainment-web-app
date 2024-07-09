@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import useManageFilter from '@/hook/dataSync/useFilterMedias';
 import Search from '../../../component/form/search/SearchBar';
 import useFitlerWithId from '@/hook/dataSync/useFitlerWithId';
+import Cards from '@/component/cards/Cards';
 
 interface SearchWrapperProps {
   children: ReactNode;
@@ -21,7 +22,7 @@ const SearchWrapper: React.FC<SearchWrapperProps> = ({ children }) => {
         <div>icone</div>
         <Search searchBar={searchBar} handleChange={handleChange} />
       </div>
-      {isSearching ? <div>ça cherche</div> : children}
+      {isSearching ? <Cards data={filteredData} /> : children}
     </div>
   );
 };

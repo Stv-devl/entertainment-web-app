@@ -1,7 +1,7 @@
 'use client';
 
-import { Media } from '@/types/types';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Media } from '@/types/types';
 
 interface UseManageFilterProps {
   media: Media[];

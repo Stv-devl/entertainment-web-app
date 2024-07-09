@@ -23,16 +23,11 @@ const Home = () => {
   if (loading) return <Loading />;
   if (error) return <Error />;
 
-  /*console.log('media', media);
-  console.log('user', user);
-  console.log('bookmarked', bookmarked);*/
-
   return (
     <SearchWrapper>
       <main>
         <Trending bookmarked={bookmarked} />
         <Recommended media={media} />
-        <></>
       </main>
     </SearchWrapper>
   );
