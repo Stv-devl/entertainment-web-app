@@ -1,16 +1,18 @@
-const apiSignup = async (newUser: {
-  id: string;
-  email: string;
-  password: string;
-  username: string;
-}): Promise<any> => {
+import { Users } from '@/types/types';
+
+const apiSignup = async ({
+  id,
+  email,
+  password,
+  username,
+}: Users): Promise<Users> => {
   try {
     const response = await fetch('http://localhost:3000/api/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ newUser }),
+      body: JSON.stringify({ id, email, password, username }),
     });
 
     if (response.ok) {

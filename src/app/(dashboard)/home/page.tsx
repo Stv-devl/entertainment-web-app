@@ -3,22 +3,38 @@
 import React from 'react';
 import withAuth from '../../../component/withAuth/WithAuth';
 import useFitlerWithId from '@/hook/dataSync/useFitlerWithId';
+import Trending from '@/component/trending/Trending';
+import Recommended from '../../../component/recommended/Recommended';
+import Loading from '@/component/loading/Loading';
+import Error from '@/component/error/Error';
+import SearchWrapper from '@/component/form/search/SearchWrapper';
+import { Media } from '@/types/types';
 
+interface UseFilterWithIdReturn {
+  media: Media[];
+  bookmarked: Media[];
+  loading: boolean;
+  error: any;
+}
 const Home = () => {
-  const { media, user, bookmarked, loading, error } = useFitlerWithId();
+  const { media, bookmarked, loading, error }: UseFilterWithIdReturn =
+    useFitlerWithId();
 
-  console.log('media', media);
+  if (loading) return <Loading />;
+  if (error) return <Error />;
+
+  /*console.log('media', media);
   console.log('user', user);
-  console.log('bookmarked', bookmarked);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  console.log('bookmarked', bookmarked);*/
 
   return (
-    <div>
-      <p>Home</p>
-    </div>
+    <SearchWrapper>
+      <main>
+        <Trending bookmarked={bookmarked} />
+        <Recommended media={media} />
+        <></>
+      </main>
+    </SearchWrapper>
   );
 };
-
 export default withAuth(Home);

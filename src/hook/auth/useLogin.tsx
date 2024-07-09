@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useAuthStore from '../../stores/useAuthStore';
 import apiLogin from '../../features/apiLogin';
-import { FormData } from '@/types/types';
+import { FormDataLogin } from '@/types/types';
 
 /**
  * Custom hook for handling login functionality.
@@ -11,10 +11,9 @@ import { FormData } from '@/types/types';
  */
 
 const useLogin = () => {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataLogin>({
     email: '',
     password: '',
-    error: '',
   });
 
   const login = useAuthStore((state) => state.login);

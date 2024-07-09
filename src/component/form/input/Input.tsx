@@ -1,11 +1,13 @@
+'use client';
 import { ChangeEvent } from 'react';
 
 export interface InputProps {
   name: string;
   labelText: string;
   type: string;
-  handleChange: (updates: { [key: string]: string }) => void;
+  handleChange: (value: { [key: string]: string }) => void;
   value: string;
+  placeholder?: string;
   error?: string;
 }
 

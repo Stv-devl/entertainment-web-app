@@ -22,7 +22,7 @@ export interface Users {
   email: string;
   password: string;
   id: string;
-  bookmarkedItems: string[];
+  bookmarkedItems?: string[];
 }
 
 export interface MediaDataType {
@@ -32,8 +32,13 @@ export interface MediaDataType {
   error: string | null;
 }
 
-export interface FormData {
+export interface FormDataLogin {
   email: string;
   password: string;
-  error?: string;
+}
+
+export interface FormDataSignUp {
+  username: string;
+  email: string;
+  password: string;
 }

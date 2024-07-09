@@ -2,14 +2,17 @@
 
 import React from 'react';
 import useSignUp from '../../hook/auth/useSignUp';
+import Input from '../../component/form/input/Input';
 
-const SignUp: React.FC = () => {
-  const {
-    handleSubmit,
-    handleUsernameChange,
-    handleEmailChange,
-    handlePasswordChange,
-  } = useSignUp();
+/**
+ * Login component
+ * Display a form for user authentication. It allows the user to write their username and password, and checkbox for remember they are login.
+ * On successful login, the user is redirected to the dashboard.
+ * @returns {JSX.Element} - The Login component with a sign-in form.
+ */
+
+const SignUp = (): JSX.Element => {
+  const { handleSubmit, handleChange, formData } = useSignUp();
 
   return (
     <main className="main bg-dark">
@@ -18,33 +21,33 @@ const SignUp: React.FC = () => {
         <h1>Sign Up</h1>
         <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
+            <Input
               name="username"
-              onChange={handleUsernameChange}
-              required
+              labelText="Username"
+              type="text"
+              handleChange={handleChange}
+              value={formData.username}
+              //error={error.email}
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
+            <Input
               name="email"
-              onChange={handleEmailChange}
-              required
+              labelText="Email"
+              type="email"
+              handleChange={handleChange}
+              value={formData.email}
+              //error={error.email}
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
+            <Input
               name="password"
-              onChange={handlePasswordChange}
-              required
+              labelText="Password"
+              type="password"
+              handleChange={handleChange}
+              value={formData.password}
+              //error={error.password}
             />
           </div>
           <button type="submit" className="sign-up-button">
