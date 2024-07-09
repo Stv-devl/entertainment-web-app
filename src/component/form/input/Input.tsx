@@ -24,6 +24,7 @@ const Input: React.FC<InputProps> = ({
   type,
   handleChange,
   value,
+  placeholder,
   error,
 }: InputProps) => {
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,6 +43,7 @@ const Input: React.FC<InputProps> = ({
         name={name}
         value={value}
         onChange={onChange}
+        placeholder={placeholder}
       />
       {/*} {error && <span className="error-message">{error}</span>}*/}
     </div>

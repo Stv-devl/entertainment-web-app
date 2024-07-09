@@ -27,7 +27,11 @@ const Series = () => {
 
   return (
     <main>
-      <Search searchBar={searchBar} handleChange={handleChange} />
+      <Search
+        searchBar={searchBar}
+        handleChange={handleChange}
+        placeholder={'Tv series'}
+      />
       <CardsWrapper
         isSearching={isSearching}
         filteredData={filteredData}

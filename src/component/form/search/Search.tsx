@@ -5,9 +5,14 @@ import Input from '../input/Input';
 export interface SearchProps {
   searchBar: string;
   handleChange: (value: { [key: string]: string }) => void;
+  placeholder: string;
 }
 
-const Search: React.FC<SearchProps> = ({ searchBar, handleChange }) => {
+const Search: React.FC<SearchProps> = ({
+  searchBar,
+  handleChange,
+  placeholder,
+}) => {
   return (
     <div className="search-wrapper">
       <div>icone</div>
@@ -18,7 +23,7 @@ const Search: React.FC<SearchProps> = ({ searchBar, handleChange }) => {
           type="text"
           value={searchBar}
           handleChange={handleChange}
-          placeholder="Type your search"
+          placeholder={`Search for ${placeholder}`}
         />
       </div>
     </div>

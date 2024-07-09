@@ -5,7 +5,6 @@ import withAuth from '../../../component/withAuth/WithAuth';
 import useFitlerWithId from '@/hook/dataSync/useFitlerWithId';
 import Loading from '@/component/loading/Loading';
 import Error from '@/component/error/Error';
-import Cards from '@/component/cards/Cards';
 import { getCategories } from '@/utils/filterByCategory';
 import useManageFilter from '@/hook/dataSync/useFilterMedias';
 import Search from '@/component/form/search/Search';
@@ -26,7 +25,11 @@ const Movies = () => {
 
   return (
     <main>
-      <Search searchBar={searchBar} handleChange={handleChange} />
+      <Search
+        searchBar={searchBar}
+        handleChange={handleChange}
+        placeholder={'movies'}
+      />
       <CardsWrapper
         isSearching={isSearching}
         filteredData={filteredData}

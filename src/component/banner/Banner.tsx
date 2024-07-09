@@ -5,6 +5,7 @@ import Image from 'next/image';
 import useAuthStore from '../../stores/useAuthStore';
 import useIsAuthenticated from '../../hook/auth/useIsAuthenticated';
 import { useLogout } from '@/hook/auth/useLogout';
+import Link from 'next/link';
 
 const Banner = () => {
   const { token } = useAuthStore((state) => ({
@@ -29,30 +30,38 @@ const Banner = () => {
           priority
         />
         <div className="nav-icon-wrapper">
-          <Image
-            src="/assets/icon-nav-home.svg"
-            alt="Icon home link"
-            width={20}
-            height={20}
-          />
-          <Image
-            src="/assets/icon-nav-movies.svg"
-            alt="Icon movies link"
-            width={20}
-            height={20}
-          />
-          <Image
-            src="/assets/icon-nav-tv-series.svg"
-            alt="Icon series link"
-            width={20}
-            height={20}
-          />
-          <Image
-            src="/assets/icon-nav-bookmark.svg"
-            alt="Icon bookmark description"
-            width={20}
-            height={20}
-          />
+          <Link href="/home">
+            <Image
+              src="/assets/icon-nav-home.svg"
+              alt="Icon home link"
+              width={20}
+              height={20}
+            />
+          </Link>
+          <Link href="/movies">
+            <Image
+              src="/assets/icon-nav-movies.svg"
+              alt="Icon movies link"
+              width={20}
+              height={20}
+            />
+          </Link>
+          <Link href="/series">
+            <Image
+              src="/assets/icon-nav-tv-series.svg"
+              alt="Icon series link"
+              width={20}
+              height={20}
+            />
+          </Link>
+          <Link href="/bookmarked">
+            <Image
+              src="/assets/icon-nav-bookmark.svg"
+              alt="Icon bookmark description"
+              width={20}
+              height={20}
+            />
+          </Link>
         </div>
       </div>
       <div className="user-icon">

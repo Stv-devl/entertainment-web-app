@@ -5,7 +5,7 @@ import useAuthStore from '@/stores/useAuthStore';
 /**
  * Custom hook to retrieve the user ID.
  * Get the user ID from the state managed, if it's not available, it attempts to retrieve the user ID from cookies.
- * @returns {string | null} The user ID if found, otherwise null.
+ * @returns  The user ID if found, otherwise null.
  */
 const useUserId = () => {
   const storeUserId = useAuthStore((state) => state.userId);

@@ -7,6 +7,7 @@ interface UseManageFilterProps {
   media?: Media[];
   seriesData?: Media[];
   moviesData?: Media[];
+  bookmarked?: Media[];
 }
 
 interface UseManageFilterReturn {
@@ -20,13 +21,12 @@ const useManageFilter = ({
   media,
   seriesData,
   moviesData,
+  bookmarked,
 }: UseManageFilterProps): UseManageFilterReturn => {
   const [searchBar, setSearchBar] = useState<string>('');
   const [isSearching, setIsSearching] = useState<boolean>(false);
 
-  const activeDatas = media || seriesData || moviesData || [];
-
-  console.log(activeDatas);
+  const activeDatas = media || seriesData || moviesData || bookmarked || [];
 
   useEffect(() => {
     if (searchBar.trim() === '') {

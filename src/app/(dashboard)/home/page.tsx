@@ -32,7 +32,11 @@ const Home = () => {
 
   return (
     <main>
-      <Search searchBar={searchBar} handleChange={handleChange} />
+      <Search
+        searchBar={searchBar}
+        handleChange={handleChange}
+        placeholder={'movies or Tv series'}
+      />
       <>
         {isSearching ? (
           <Cards data={filteredData} />
