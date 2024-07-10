@@ -1,3 +1,4 @@
+import '../global.css';
 import Banner from '../component/banner/Banner';
 
 export const metadata = {
@@ -16,9 +17,9 @@ export default function RootLayout({
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-      <body>
+      <body className="bg-[#10141E] w-full max-w-[1650px] text-white">
         <Banner />
-        {children}
+        <main className="pl-[156px] mt-[2%]">{children}</main>
       </body>
     </html>
   );

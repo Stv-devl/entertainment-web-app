@@ -3,6 +3,8 @@ import apiSignup from '../../features/apiSignup';
 import { v4 as uuidv4 } from 'uuid';
 import useUserStore from '@/stores/useUserStore';
 import { FormDataSignUp } from '@/types/types';
+import useValidation from '../validation/useValidation';
+import { useRouter } from 'next/navigation';
 
 const useSignUp = () => {
   const [formData, setFormData] = useState<FormDataSignUp>({
@@ -10,13 +12,12 @@ const useSignUp = () => {
     email: '',
     password: '',
   });
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
+  const { errors, isValidate } = useValidation(formData, isSubmitted);
   const addUser = useUserStore((state) => state.addUser);
+  const router = useRouter();
 
-  /**
-   * Handles changes to the form inputs.
-   * @param updates - An object containing the updated form values.
-   */
   const handleChange = (updates: {}) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -26,22 +27,22 @@ const useSignUp = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { email, password, username } = formData;
+    setIsSubmitted(true);
+
+    if (!isValidate) {
+      console.error('Form data is invalid');
+      return;
+    }
     try {
       const newUser = await apiSignup({
         id: uuidv4(),
-        email,
-        password,
-        username,
+        ...formData,
       });
-
       addUser({
-        id: newUser.id,
-        email: newUser.email,
-        password: newUser.password,
-        username: newUser.username,
+        ...newUser,
         bookmarkedItems: newUser.bookmarkedItems || [],
       });
+      router.push('/login');
       console.log('signup working', newUser);
     } catch (error) {
       console.error('Sign up failed:', error);
@@ -52,6 +53,7 @@ const useSignUp = () => {
     handleSubmit,
     handleChange,
     formData,
+    errors,
   };
 };
 

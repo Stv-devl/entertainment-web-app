@@ -12,50 +12,48 @@ import Input from '../../component/form/input/Input';
  */
 
 const SignUp = (): JSX.Element => {
-  const { handleSubmit, handleChange, formData } = useSignUp();
+  const { handleSubmit, handleChange, formData, errors } = useSignUp();
 
   return (
-    <main className="main bg-dark">
-      <section className="sign-up-content">
-        <i className="fa fa-user-circle sign-up-icon"></i>
-        <h1>Sign Up</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <Input
-              name="username"
-              labelText="Username"
-              type="text"
-              handleChange={handleChange}
-              value={formData.username}
-              //error={error.email}
-            />
-          </div>
-          <div className="input-wrapper">
-            <Input
-              name="email"
-              labelText="Email"
-              type="email"
-              handleChange={handleChange}
-              value={formData.email}
-              //error={error.email}
-            />
-          </div>
-          <div className="input-wrapper">
-            <Input
-              name="password"
-              labelText="Password"
-              type="password"
-              handleChange={handleChange}
-              value={formData.password}
-              //error={error.password}
-            />
-          </div>
-          <button type="submit" className="sign-up-button">
-            Sign Up
-          </button>
-        </form>
-      </section>
-    </main>
+    <section className="pl-[156px] mt-[2%]">
+      <i className="fa fa-user-circle sign-up-icon"></i>
+      <h1>Sign Up</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="input-wrapper">
+          <Input
+            name="username"
+            labelText="Username"
+            type="text"
+            handleChange={handleChange}
+            value={formData.username}
+            error={errors.username}
+          />
+        </div>
+        <div className="input-wrapper">
+          <Input
+            name="email"
+            labelText="Email"
+            type="email"
+            handleChange={handleChange}
+            value={formData.email}
+            error={errors.email}
+          />
+        </div>
+        <div className="input-wrapper">
+          <Input
+            name="password"
+            labelText="Password"
+            type="password"
+            handleChange={handleChange}
+            value={formData.password}
+            error={errors.password}
+          />
+        </div>
+        <button type="submit" className="sign-up-button">
+          Sign Up
+        </button>
+      </form>
+    </section>
   );
 };
 

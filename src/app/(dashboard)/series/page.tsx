@@ -26,7 +26,7 @@ const Series = () => {
   if (error) return <Error />;
 
   return (
-    <main>
+    <>
       <Search
         searchBar={searchBar}
         handleChange={handleChange}
@@ -38,7 +38,7 @@ const Series = () => {
         datas={seriesData}
         title={'Tv series'}
       />
-    </main>
+    </>
   );
 };
 

@@ -15,11 +15,11 @@ const Search: React.FC<SearchProps> = ({
 }) => {
   return (
     <div className="search-wrapper">
-      <div>icone</div>
+      <img src="/assets/icon-search.svg" alt="search bar icon" />
       <div className="search-bar-container">
         <Input
           name="search"
-          labelText="Search :"
+          labelText=""
           type="text"
           value={searchBar}
           handleChange={handleChange}

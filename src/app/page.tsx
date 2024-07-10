@@ -4,11 +4,7 @@ import React from 'react';
 import Home from './(dashboard)/home/page';
 
 const Index = () => {
-  return (
-    <main>
-      <Home />
-    </main>
-  );
+  return <Home />;
 };
 
 export default Index;

@@ -17,7 +17,7 @@ const BookMarked = () => {
   if (error) return <div>Error: </div>;
 
   return (
-    <main>
+    <>
       <Search
         searchBar={searchBar}
         handleChange={handleChange}
@@ -29,7 +29,7 @@ const BookMarked = () => {
         datas={bookmarked}
         title={'Bookmarked Movies'}
       />
-    </main>
+    </>
   );
 };
 

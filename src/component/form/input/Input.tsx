@@ -45,7 +45,7 @@ const Input: React.FC<InputProps> = ({
         onChange={onChange}
         placeholder={placeholder}
       />
-      {/*} {error && <span className="error-message">{error}</span>}*/}
+      {error && <span className="error-message">{error}</span>}
     </div>
   );
 };

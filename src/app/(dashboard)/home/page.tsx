@@ -31,7 +31,7 @@ const Home = () => {
   if (error) return <Error />;
 
   return (
-    <main>
+    <>
       <Search
         searchBar={searchBar}
         handleChange={handleChange}
@@ -47,7 +47,7 @@ const Home = () => {
           </div>
         )}
       </>
-    </main>
+    </>
   );
 };
 export default withAuth(Home);

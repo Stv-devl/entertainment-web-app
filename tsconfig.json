@@ -29,7 +29,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/component/withAuth/WithAuth.jsx"
+    "src/component/withAuth/WithAuth.jsx",
+    "postcss.config.js",
+    "tailwind.config.ts"
   ],
   "exclude": ["node_modules"]
 }

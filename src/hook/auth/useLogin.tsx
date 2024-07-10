@@ -15,6 +15,7 @@ const useLogin = () => {
     email: '',
     password: '',
   });
+  const [error, setError] = useState<boolean>(false);
 
   const login = useAuthStore((state) => state.login);
   const setUserId = useAuthStore((state) => state.setUserId);
@@ -26,6 +27,7 @@ const useLogin = () => {
    */
 
   const handleChange = (updates: {}) => {
+    setError(false);
     setFormData((prevFormData) => ({
       ...prevFormData,
       ...updates,
@@ -43,14 +45,13 @@ const useLogin = () => {
         formData.email,
         formData.password
       );
-      //gerer erreur après voir HRNET, faire sans librairie
-      /*const { errors, validateFormData } = useValidation(formData);*/
 
       login(token);
       setUserId(userId);
       router.push('/home');
     } catch (error) {
       console.error('Login failed:', error);
+      setError(true);
     }
   };
 
@@ -58,6 +59,8 @@ const useLogin = () => {
     handleSubmit,
     handleChange,
     formData,
+    error,
+    setError,
   };
 };
 
