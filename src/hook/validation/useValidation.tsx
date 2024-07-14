@@ -37,7 +37,10 @@ const useValidation = (formData: FormDataSignUp, isSubmitted: boolean) => {
     setErrors(newErrors);
   }, [formData, isSubmitted]);
 
-  const isValidate = !errors.username && !errors.email && !errors.password;
+  const isValidate =
+    errors.username.length > 0 &&
+    errors.email.length > 0 &&
+    errors.password.length > 0;
 
   return { errors, isValidate };
 };
