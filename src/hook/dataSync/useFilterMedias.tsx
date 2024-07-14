@@ -1,21 +1,7 @@
 'use client';
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Media } from '@/types/types';
-
-interface UseManageFilterProps {
-  media?: Media[];
-  seriesData?: Media[];
-  moviesData?: Media[];
-  bookmarked?: Media[];
-}
-
-interface UseManageFilterReturn {
-  searchBar: string;
-  filteredData: Media[];
-  handleChange: (updates: { [key: string]: string }) => void;
-  isSearching: boolean;
-}
+import { UseManageFilterProps, UseManageFilterReturn } from '@/types/types';
 
 const useManageFilter = ({
   media,
@@ -24,33 +10,25 @@ const useManageFilter = ({
   bookmarked,
 }: UseManageFilterProps): UseManageFilterReturn => {
   const [searchBar, setSearchBar] = useState<string>('');
-  const [isSearching, setIsSearching] = useState<boolean>(false);
 
-  const activeDatas = media || seriesData || moviesData || bookmarked || [];
+  const activeDatas = useMemo(() => {
+    return media || seriesData || moviesData || bookmarked || [];
+  }, [media, seriesData, moviesData, bookmarked]);
 
-  useEffect(() => {
-    if (searchBar.trim() === '') {
-      setIsSearching(false);
-    } else {
-      setIsSearching(true);
-    }
-  }, [searchBar]);
+  const isSearching = useMemo(() => searchBar.trim() !== '', [searchBar]);
 
   const filteredData = useMemo(() => {
-    if (searchBar.trim() === '') {
+    if (!isSearching) {
       return activeDatas;
     }
-    return (
-      activeDatas &&
-      activeDatas.filter((el) =>
-        Object.values(el).some(
-          (value) =>
-            typeof value === 'string' &&
-            value.toLowerCase().includes(searchBar.toLowerCase())
-        )
+    return activeDatas.filter((el) =>
+      Object.values(el).some(
+        (value) =>
+          typeof value === 'string' &&
+          value.toLowerCase().includes(searchBar.toLowerCase())
       )
     );
-  }, [activeDatas, searchBar]);
+  }, [activeDatas, searchBar, isSearching]);
 
   const handleChange = useCallback((updates: { [key: string]: string }) => {
     setSearchBar(updates.search);

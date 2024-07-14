@@ -9,18 +9,15 @@ import useAuthStore from '@/stores/useAuthStore';
  */
 const useUserId = () => {
   const storeUserId = useAuthStore((state) => state.userId);
-  const [userId, setUserId] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>(
+    storeUserId || Cookies.get('userId') || null
+  );
 
   useEffect(() => {
-    if (storeUserId) {
+    if (storeUserId && storeUserId !== userId) {
       setUserId(storeUserId);
-    } else {
-      const savedUserId = Cookies.get('userId');
-      if (savedUserId) {
-        setUserId(savedUserId);
-      }
     }
-  }, [storeUserId]);
+  }, [storeUserId, userId]);
 
   return userId;
 };

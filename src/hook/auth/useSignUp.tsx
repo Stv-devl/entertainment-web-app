@@ -14,7 +14,7 @@ const useSignUp = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const { errors, isValidate } = useValidation(formData, isSubmitted);
+  const { signupErrors, isValidate } = useValidation(formData, isSubmitted);
   const addUser = useUserStore((state) => state.addUser);
   const router = useRouter();
 
@@ -53,7 +53,8 @@ const useSignUp = () => {
     handleSubmit,
     handleChange,
     formData,
-    errors,
+    signupErrors,
+    isSubmitted,
   };
 };
 

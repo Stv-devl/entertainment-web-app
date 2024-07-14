@@ -1,14 +1,8 @@
 import React from 'react';
-import { Media } from '@/types/types';
 import TrendingCards from '../cards/TrendingCards';
-
-interface TrendingProps {
-  bookmarked: Media[];
-}
+import { TrendingProps } from '@/types/types';
 
 const Trending: React.FC<TrendingProps> = ({ bookmarked }) => {
-  console.log(bookmarked);
-
   return (
     <div className="trending-container">
       <h1>Trending</h1>

@@ -1,12 +1,7 @@
 'use client';
 import React from 'react';
 import Input from '../input/Input';
-
-export interface SearchProps {
-  searchBar: string;
-  handleChange: (value: { [key: string]: string }) => void;
-  placeholder: string;
-}
+import { SearchProps } from '@/types/types';
 
 const Search: React.FC<SearchProps> = ({
   searchBar,

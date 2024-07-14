@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import useSignUp from '../../hook/auth/useSignUp';
-import Input from '../../component/form/input/Input';
 import Image from 'next/image';
 import Link from 'next/link';
+import useSignUp from '../../hook/auth/useSignUp';
+import Input from '../../component/form/input/Input';
 
 /**
  * Login component
@@ -14,7 +14,8 @@ import Link from 'next/link';
  */
 
 const SignUp = (): JSX.Element => {
-  const { handleSubmit, handleChange, formData, errors } = useSignUp();
+  const { handleSubmit, handleChange, formData, signupErrors, isSubmitted } =
+    useSignUp();
 
   return (
     <section className="flex flex-col items-center gap-[83px] min-h-screen">
@@ -39,7 +40,7 @@ const SignUp = (): JSX.Element => {
               type="text"
               handleChange={handleChange}
               value={formData.username}
-              error={errors.username}
+              error={signupErrors.username}
             />
           </div>
           <div className="input-wrapper">
@@ -49,7 +50,7 @@ const SignUp = (): JSX.Element => {
               type="email"
               handleChange={handleChange}
               value={formData.email}
-              error={errors.email}
+              error={signupErrors.email}
             />
           </div>
           <div className="input-wrapper">
@@ -59,20 +60,20 @@ const SignUp = (): JSX.Element => {
               type="password"
               handleChange={handleChange}
               value={formData.password}
-              error={errors.password}
+              error={signupErrors.password}
             />
           </div>
 
           <button
             type="submit"
-            className="bg-[#FC4747] duration-500 ease-in-out hover:bg-slate-50 hover:text-black font-normal  w-full h-[48px] rounded-lg"
+            className="bg-[#FC4747] duration-500 ease-in-out hover:bg-slate-50 hover:text-black font-normal w-full h-[48px] rounded-lg"
           >
             Sign Up
           </button>
-          <p className="font-normal">
+          <p className="font-normal px-[16%]">
             Already have an account?{' '}
             <Link href="/login">
-              <span className="text-[#FC4747] font-normal  ml-[10px]">
+              <span className="text-[#FC4747] font-normal ml-[10px]">
                 Login
               </span>
             </Link>

@@ -10,14 +10,8 @@ import Error from '@/component/error/Error';
 import Search from '../../../component/form/search/Search';
 import useManageFilter from '@/hook/dataSync/useFilterMedias';
 import Cards from '@/component/cards/Cards';
-import { Media } from '@/types/types';
+import { UseFilterWithIdReturn } from '@/types/types';
 
-interface UseFilterWithIdReturn {
-  media: Media[];
-  bookmarked: Media[];
-  loading: boolean;
-  error: any;
-}
 const Home = () => {
   const { media, bookmarked, loading, error }: UseFilterWithIdReturn =
     useFitlerWithId();

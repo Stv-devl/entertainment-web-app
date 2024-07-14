@@ -1,10 +1,6 @@
-import { Media } from '@/types/types';
+import { RecommendedProps } from '@/types/types';
 import React from 'react';
 import Cards from '../cards/Cards';
-
-interface RecommendedProps {
-  media: Media[];
-}
 
 const Recommended: React.FC<RecommendedProps> = ({ media }) => {
   return (

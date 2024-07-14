@@ -1,16 +1,6 @@
 'use client';
-import useLogin from '@/hook/auth/useLogin';
+import { InputProps } from '@/types/types';
 import { ChangeEvent } from 'react';
-
-export interface InputProps {
-  name: string;
-  type: string;
-  handleChange: (value: { [key: string]: string }) => void;
-  value: string;
-  placeholder?: string;
-  error?: string;
-  errors?: boolean;
-}
 
 /**
  * Input component
@@ -26,7 +16,6 @@ const Input: React.FC<InputProps> = ({
   value,
   placeholder,
   error,
-  errors,
 }: InputProps) => {
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     handleChange({ [name]: e.target.value });
@@ -36,7 +25,7 @@ const Input: React.FC<InputProps> = ({
     <>
       <input
         className={`w-full bg-[#161D2F] border-b ${
-          errors
+          error
             ? 'border-[#FC4747] focus:border-[#FC4747]'
             : 'border-custom-border-color focus:border-white'
         } focus:outline-none placeholder:text-gray-500 placeholder:font-normal pl-[10px] h-[36px]`}
@@ -47,7 +36,9 @@ const Input: React.FC<InputProps> = ({
         onChange={onChange}
         placeholder={placeholder}
       />
-      {error && <span className="error-message ">{error}</span>}
+      {error && error !== 'loginerror' && (
+        <span className="text-[#FC4747]">{error}</span>
+      )}
     </>
   );
 };

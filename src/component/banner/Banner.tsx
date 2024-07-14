@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import useAuthStore from '../../stores/useAuthStore';
 import useIsAuthenticated from '../../hook/auth/useIsAuthenticated';
 import { useLogout } from '@/hook/auth/useLogout';
-import Link from 'next/link';
 
 const Banner = () => {
   const { token } = useAuthStore((state) => ({

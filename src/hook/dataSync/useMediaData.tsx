@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Media, MediaDataType, Users } from '../../types/types';
 import apiService from '../../features/apiDatas';
 
@@ -10,23 +10,27 @@ const useMediaData = (): MediaDataType => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const { media, users } = await apiService();
-        setMedia(media);
-        setUsers(users);
-        setLoading(false);
-      } catch (error: any) {
+  const fetchData = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const { media, users } = await apiService();
+      setMedia(media);
+      setUsers(users);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
         setError(error.message);
-        setLoading(false);
+      } else {
+        setError('An unknown error occurred');
       }
-    };
-
-    fetchData();
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return { media, users, loading, error };
 };

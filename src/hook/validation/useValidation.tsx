@@ -1,48 +1,52 @@
-import { useState, useEffect } from 'react';
-import { FormDataSignUp } from '@/types/types';
+import { useState, useEffect, useMemo } from 'react';
+import { FormDataSignUp, ValidationErrors } from '@/types/types';
+
 import {
   validateEmail,
   validatePassword,
   validateUsername,
 } from '@/utils/validation';
 
-type ValidationErrors = {
-  username: string;
-  email: string;
-  password: string;
-};
-
 const useValidation = (formData: FormDataSignUp, isSubmitted: boolean) => {
-  const [errors, setErrors] = useState<ValidationErrors>({
+  const [signupErrors, setSignupErrors] = useState<ValidationErrors>({
     username: '',
     email: '',
     password: '',
   });
 
-  useEffect(() => {
-    if (!isSubmitted) return;
-
-    const newErrors = {
-      username: validateUsername(formData.username)
-        ? ''
-        : 'Invalid username. Must be 4-16 characters.',
-      email: validateEmail(formData.email)
-        ? ''
-        : 'Must write a valid email adress.',
-      password: validatePassword(formData.password)
-        ? ''
-        : 'Invalid password. Must be at least 4 characters long.',
+  const newErrors = useMemo((): ValidationErrors => {
+    return {
+      username:
+        formData.username.trim() === ''
+          ? 'Username is required.'
+          : validateUsername(formData.username)
+          ? ''
+          : 'Invalid username. Must be 4-16 characters.',
+      email:
+        formData.email.trim() === ''
+          ? 'Email is required.'
+          : validateEmail(formData.email)
+          ? ''
+          : 'Must write a valid email address.',
+      password:
+        formData.password.trim() === ''
+          ? 'Password is required.'
+          : validatePassword(formData.password)
+          ? ''
+          : 'Invalid password. Must be at least 4 characters long.',
     };
+  }, [formData]);
 
-    setErrors(newErrors);
-  }, [formData, isSubmitted]);
+  useEffect(() => {
+    if (isSubmitted) {
+      setSignupErrors(newErrors);
+    }
+  }, [isSubmitted, newErrors]);
 
   const isValidate =
-    errors.username.length > 0 &&
-    errors.email.length > 0 &&
-    errors.password.length > 0;
+    isSubmitted && !Object.values(newErrors).some((error) => error);
 
-  return { errors, isValidate };
+  return { signupErrors, isValidate };
 };
 
 export default useValidation;

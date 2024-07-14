@@ -15,7 +15,7 @@ const useLogin = () => {
     email: '',
     password: '',
   });
-  const [errors, setErrors] = useState<boolean>(false);
+  const [loginErrors, setLoginErrors] = useState<boolean>(false);
 
   const login = useAuthStore((state) => state.login);
   const setUserId = useAuthStore((state) => state.setUserId);
@@ -26,7 +26,7 @@ const useLogin = () => {
    * @param updates - An object containing the updated form values.
    */
   const handleChange = useCallback((updates: {}) => {
-    setErrors(false);
+    setLoginErrors(false);
     setFormData((prevFormData) => ({
       ...prevFormData,
       ...updates,
@@ -44,13 +44,12 @@ const useLogin = () => {
         formData.email,
         formData.password
       );
-
       login(token);
       setUserId(userId);
       router.push('/home');
     } catch (error) {
       console.error('Login failed:', error);
-      setErrors(true);
+      setLoginErrors(true);
     }
   };
 
@@ -58,8 +57,7 @@ const useLogin = () => {
     handleSubmit,
     handleChange,
     formData,
-    errors,
-    setErrors,
+    loginErrors,
   };
 };
 

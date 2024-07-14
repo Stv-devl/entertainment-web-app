@@ -1,9 +1,7 @@
-import { Media } from '@/types/types';
+import { CardsProps } from '@/types/types';
 import React from 'react';
 
-interface CardsProps {
-  data: Media[];
-}
+
 
 const TrendingCards: React.FC<CardsProps> = ({ data }) => {
   return (

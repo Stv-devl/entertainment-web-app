@@ -1,13 +1,7 @@
 import React from 'react';
+import { CardsWrapperProps } from '@/types/types';
 import Cards from './Cards';
-import { Media } from '@/types/types';
 
-interface CardsWrapperProps {
-  isSearching: boolean;
-  filteredData: Media[];
-  datas: Media[];
-  title: string;
-}
 const CardsWrapper: React.FC<CardsWrapperProps> = ({
   isSearching,
   filteredData,
