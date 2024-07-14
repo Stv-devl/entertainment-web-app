@@ -16,10 +16,14 @@ export default function RootLayout({
       <head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body className="bg-[#10141E] w-full max-w-[1650px] text-white">
+      <body className="bg-[#10141E] w-full text-white font-outfit text-[15px] font-light">
         <Banner />
-        <main className="pl-[156px] mt-[2%]">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   );

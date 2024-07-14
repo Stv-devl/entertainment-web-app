@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useCallback, useState } from 'react';
 import apiSignup from '../../features/apiSignup';
 import { v4 as uuidv4 } from 'uuid';
 import useUserStore from '@/stores/useUserStore';
@@ -18,12 +18,12 @@ const useSignUp = () => {
   const addUser = useUserStore((state) => state.addUser);
   const router = useRouter();
 
-  const handleChange = (updates: {}) => {
+  const handleChange = useCallback((updates: {}) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       ...updates,
     }));
-  };
+  }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

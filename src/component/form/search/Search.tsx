@@ -19,7 +19,6 @@ const Search: React.FC<SearchProps> = ({
       <div className="search-bar-container">
         <Input
           name="search"
-          labelText=""
           type="text"
           value={searchBar}
           handleChange={handleChange}

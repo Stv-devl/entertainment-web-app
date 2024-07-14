@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useAuthStore from '../../stores/useAuthStore';
 import apiLogin from '../../features/apiLogin';
@@ -15,7 +15,7 @@ const useLogin = () => {
     email: '',
     password: '',
   });
-  const [error, setError] = useState<boolean>(false);
+  const [errors, setErrors] = useState<boolean>(false);
 
   const login = useAuthStore((state) => state.login);
   const setUserId = useAuthStore((state) => state.setUserId);
@@ -25,14 +25,13 @@ const useLogin = () => {
    * Handles changes to the form inputs.
    * @param updates - An object containing the updated form values.
    */
-
-  const handleChange = (updates: {}) => {
-    setError(false);
+  const handleChange = useCallback((updates: {}) => {
+    setErrors(false);
     setFormData((prevFormData) => ({
       ...prevFormData,
       ...updates,
     }));
-  };
+  }, []);
 
   /**
    * Handles form submission for logging in the user.
@@ -51,7 +50,7 @@ const useLogin = () => {
       router.push('/home');
     } catch (error) {
       console.error('Login failed:', error);
-      setError(true);
+      setErrors(true);
     }
   };
 
@@ -59,8 +58,8 @@ const useLogin = () => {
     handleSubmit,
     handleChange,
     formData,
-    error,
-    setError,
+    errors,
+    setErrors,
   };
 };
 

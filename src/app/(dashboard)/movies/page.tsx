@@ -24,7 +24,7 @@ const Movies = () => {
   if (error) return <Error />;
 
   return (
-    <>
+    <section className="pl-[156px] mt-[2%]">
       <Search
         searchBar={searchBar}
         handleChange={handleChange}
@@ -36,7 +36,7 @@ const Movies = () => {
         datas={moviesData}
         title={'Movies'}
       />
-    </>
+    </section>
   );
 };
 
