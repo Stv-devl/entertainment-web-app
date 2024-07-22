@@ -11,6 +11,7 @@ const useSignUp = () => {
     username: '',
     email: '',
     password: '',
+    repeat: '',
   });
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 

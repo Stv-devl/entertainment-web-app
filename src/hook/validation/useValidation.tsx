@@ -4,6 +4,7 @@ import { FormDataSignUp, ValidationErrors } from '@/types/types';
 import {
   validateEmail,
   validatePassword,
+  validateRepeatPassword,
   validateUsername,
 } from '@/utils/validation';
 
@@ -12,6 +13,7 @@ const useValidation = (formData: FormDataSignUp, isSubmitted: boolean) => {
     username: '',
     email: '',
     password: '',
+    repeat: '',
   });
 
   const newErrors = useMemo((): ValidationErrors => {
@@ -34,6 +36,12 @@ const useValidation = (formData: FormDataSignUp, isSubmitted: boolean) => {
           : validatePassword(formData.password)
           ? ''
           : 'Invalid password. Must be at least 4 characters long.',
+      repeat:
+        formData.password.trim() === ''
+          ? 'Password is required.'
+          : validateRepeatPassword(formData.password, formData.repeat)
+          ? ''
+          : 'Password should be the same .',
     };
   }, [formData]);
 

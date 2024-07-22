@@ -41,6 +41,7 @@ export interface FormDataSignUp {
   username: string;
   email: string;
   password: string;
+  repeat: string;
 }
 
 export interface InputProps {
@@ -105,4 +106,5 @@ export type ValidationErrors = {
   username: string;
   email: string;
   password: string;
+  repeat: string;
 };

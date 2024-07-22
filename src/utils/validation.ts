@@ -13,3 +13,10 @@ export const validatePassword = (password: string): boolean => {
   const regex = /^.{4,}$/;
   return regex.test(password);
 };
+
+export const validateRepeatPassword = (
+  password: string,
+  repeatPassword: string
+): boolean => {
+  return password === repeatPassword;
+};

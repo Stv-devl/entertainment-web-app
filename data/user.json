@@ -24,5 +24,11 @@
     "email": "lkjlkj@khgj.fr",
     "password": "0000",
     "username": "Francois"
+  },
+  {
+    "id": "6ef3e9e4-ccd8-46d3-bf81-4a9eddc9d120",
+    "email": "test@hotmail.fr",
+    "password": "test1234",
+    "username": "bojo"
   }
 ]

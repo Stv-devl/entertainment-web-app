@@ -14,8 +14,7 @@ import Input from '../../component/form/input/Input';
  */
 
 const SignUp = (): JSX.Element => {
-  const { handleSubmit, handleChange, formData, signupErrors, isSubmitted } =
-    useSignUp();
+  const { handleSubmit, handleChange, formData, signupErrors } = useSignUp();
 
   return (
     <section className="flex flex-col items-center gap-[83px] min-h-screen">
@@ -61,6 +60,16 @@ const SignUp = (): JSX.Element => {
               handleChange={handleChange}
               value={formData.password}
               error={signupErrors.password}
+            />
+          </div>
+          <div className="input-wrapper">
+            <Input
+              name="repeat"
+              placeholder="Repeat password"
+              type="password"
+              handleChange={handleChange}
+              value={formData.repeat}
+              error={signupErrors.repeat}
             />
           </div>
 
