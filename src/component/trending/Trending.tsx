@@ -1,12 +1,14 @@
 import React from 'react';
 import TrendingCards from '../cards/TrendingCards';
-import { TrendingProps } from '@/types/types';
+import { MediaProps } from '@/types/types';
 
-const Trending: React.FC<TrendingProps> = ({ bookmarked }) => {
+const Trending: React.FC<MediaProps> = ({ media }) => {
   return (
     <div className="trending-container">
       <h1 className="text-[32px] mb-[25px]">Trending</h1>
-      <TrendingCards data={bookmarked} />
+      <TrendingCards
+        trendings={media && media.filter((item) => item.isTrending === true)}
+      />
     </div>
   );
 };

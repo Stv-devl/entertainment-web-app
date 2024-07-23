@@ -1,8 +1,8 @@
-import { RecommendedProps } from '@/types/types';
+import { MediaProps } from '@/types/types';
 import React from 'react';
 import Cards from '../cards/Cards';
 
-const Recommended: React.FC<RecommendedProps> = ({ media }) => {
+const Recommended: React.FC<MediaProps> = ({ media }) => {
   return (
     <div className="Recommended-container">
       <h1>Recommended</h1>

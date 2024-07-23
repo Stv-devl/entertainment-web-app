@@ -13,8 +13,7 @@ import Cards from '@/component/cards/Cards';
 import { UseFilterWithIdReturn } from '@/types/types';
 
 const Home = () => {
-  const { media, bookmarked, loading, error }: UseFilterWithIdReturn =
-    useFitlerWithId();
+  const { media, loading, error }: UseFilterWithIdReturn = useFitlerWithId();
 
   const { searchBar, filteredData, handleChange, isSearching } =
     useManageFilter({
@@ -36,7 +35,7 @@ const Home = () => {
           <Cards data={filteredData} />
         ) : (
           <div className="page-container">
-            <Trending bookmarked={bookmarked} />
+            <Trending media={media} />
             <Recommended media={media} />
           </div>
         )}

@@ -1,4 +1,5 @@
 import { CardsProps } from '@/types/types';
+import Image from 'next/image';
 import React from 'react';
 
 const Cards: React.FC<CardsProps> = ({ data }) => {
@@ -6,23 +7,16 @@ const Cards: React.FC<CardsProps> = ({ data }) => {
     <div className="flex flex-wrap gap-[25px]">
       {data &&
         data.map((data, index) => (
-          <div className="card-wrapper custom-col" key={`trendingd${index}`}>
+          <div className="card-wrapper custom-col" key={`trending${index}`}>
             <div>icone</div>
             {data.thumbnail?.regular && (
-              <picture>
-                <source
-                  srcSet={data.thumbnail.regular.large}
-                  media="(min-width: 1200px)"
-                />
-                <source
-                  srcSet={data.thumbnail.regular.medium}
-                  media="(min-width: 768px)"
-                />
-                <img
-                  src={data.thumbnail.regular.small}
-                  alt={`${data.title} ${data.category}`}
-                />
-              </picture>
+              <Image
+                src={data.thumbnail.regular.small}
+                alt={`${data.title} ${data.category}`}
+                width={328}
+                height={220}
+                className="rounded-[8px]"
+              />
             )}
             <div className="texte-wrapper">
               <div className="description-wrapper">

@@ -59,14 +59,7 @@ export interface SearchProps {
   placeholder: string;
 }
 
-export interface RecommendedProps {
-  media: Media[];
-}
-export interface TrendingProps {
-  bookmarked: Media[];
-}
-
-export interface RecommendedProps {
+export interface MediaProps {
   media: Media[];
 }
 
@@ -77,8 +70,8 @@ export interface UseFilterWithIdReturn {
   error: any;
 }
 
-export interface CardsProps {
-  data: Media[];
+export interface TrendingProps {
+  trendings: Media[];
 }
 
 export interface CardsWrapperProps {
