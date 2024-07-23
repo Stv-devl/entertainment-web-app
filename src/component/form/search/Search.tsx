@@ -2,6 +2,7 @@
 import React from 'react';
 import Input from '../input/Input';
 import { SearchProps } from '@/types/types';
+import Image from 'next/image';
 
 const Search: React.FC<SearchProps> = ({
   searchBar,
@@ -9,9 +10,15 @@ const Search: React.FC<SearchProps> = ({
   placeholder,
 }) => {
   return (
-    <div className="search-wrapper">
-      <img src="/assets/icon-search.svg" alt="search bar icon" />
-      <div className="search-bar-container">
+    <div className="flex gap-[14px] mb-[25px] pt-[25px]">
+      <Image
+        src="/assets/icon-search.svg"
+        alt="search bar icon"
+        width={32}
+        height={32}
+        className="object-contain"
+      />
+      <div className="w-[100%]">
         <Input
           name="search"
           type="text"

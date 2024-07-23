@@ -16,6 +16,9 @@ module.exports = {
         'border-bottom': '1px solid #5A698F',
         'border-bottom-error': '1px solid #FC4747',
       },
+      gridTemplateColumns: {
+        'custom-cols': '24% 24% 24% 24%',
+      },
     },
   },
   plugins: [],

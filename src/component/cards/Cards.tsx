@@ -3,10 +3,10 @@ import React from 'react';
 
 const Cards: React.FC<CardsProps> = ({ data }) => {
   return (
-    <div className="cards-container">
+    <div className="flex flex-wrap gap-[25px]">
       {data &&
         data.map((data, index) => (
-          <div className="card-wrapper" key={`trendingd${index}`}>
+          <div className="card-wrapper custom-col" key={`trendingd${index}`}>
             <div>icone</div>
             {data.thumbnail?.regular && (
               <picture>

@@ -21,14 +21,24 @@ const Input: React.FC<InputProps> = ({
     handleChange({ [name]: e.target.value });
   };
 
+  const borderClass = error
+    ? 'border-[#FC4747] focus:border-[#FC4747]'
+    : name === 'search'
+    ? value.length > 0
+      ? 'focus:border-custom-border-color'
+      : 'border-none'
+    : 'border-custom-border-color focus:border-white';
+
   return (
     <>
       <input
-        className={`w-full bg-[#161D2F] border-b ${
-          error
-            ? 'border-[#FC4747] focus:border-[#FC4747]'
-            : 'border-custom-border-color focus:border-white'
-        } focus:outline-none placeholder:text-gray-500 placeholder:font-normal pl-[10px] h-[36px]`}
+        className={`w-full border-b ${borderClass}   
+          ${
+            name === 'search'
+              ? 'bg-[#10141E]  text-2xl placeholder:text-2xl'
+              : 'bg-[#161D2F] placeholder:text-normal'
+          }  
+          focus:outline-none placeholder:text-gray-5m00 pl-[10px] h-[36px]`}
         type={type}
         id={name}
         name={name}

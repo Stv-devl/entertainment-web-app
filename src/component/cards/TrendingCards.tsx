@@ -1,11 +1,9 @@
 import { CardsProps } from '@/types/types';
 import React from 'react';
 
-
-
 const TrendingCards: React.FC<CardsProps> = ({ data }) => {
   return (
-    <div className="cards-container-trending">
+    <div className="flex gap-[40px]">
       {data &&
         data.map((data, index) => (
           <div className="card-trending-wrapper" key={`trending${index}`}>
