@@ -8,6 +8,7 @@ module.exports = {
         'background-light-black': '#161D2F',
         'text-red': '#FC4747',
         'custom-border-color': '#5A698F',
+        'icon-black': '#000000',
       },
       fontFamily: {
         outfit: ['Outfit', 'sans-serif'],
@@ -16,8 +17,8 @@ module.exports = {
         'border-bottom': '1px solid #5A698F',
         'border-bottom-error': '1px solid #FC4747',
       },
-      gridTemplateColumns: {
-        'custom-cols': '24% 24% 24% 24%',
+      transitionProperty: {
+        fill: 'fill',
       },
     },
   },

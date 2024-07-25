@@ -101,3 +101,10 @@ export type ValidationErrors = {
   password: string;
   repeat: string;
 };
+
+export interface btnTrendingProps {
+  onClick: () => void;
+  iconSrc: string;
+  alt: string;
+  position: string;
+}
