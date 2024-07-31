@@ -1,10 +1,10 @@
-import { CardsProps } from '@/types/types';
+import { DataProps } from '@/types/types';
 import Image from 'next/image';
 import React from 'react';
 
-const Cards: React.FC<CardsProps> = ({ data }) => {
+const Cards: React.FC<DataProps> = ({ data }) => {
   return (
-    <div className="flex flex-wrap gap-[25px]">
+    <div className="flex flex-wrap gap-[25px] max-w-[1490px]">
       {data &&
         data.map((data, index) => (
           <div className="card-wrapper custom-col" key={`trending${index}`}>
@@ -13,8 +13,8 @@ const Cards: React.FC<CardsProps> = ({ data }) => {
               <Image
                 src={data.thumbnail.regular.small}
                 alt={`${data.title} ${data.category}`}
-                width={328}
-                height={220}
+                width={280}
+                height={174}
                 className="rounded-[8px]"
               />
             )}

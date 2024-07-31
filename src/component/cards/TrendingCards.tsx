@@ -8,25 +8,21 @@ const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const isMobile = useMediaQuery({ query: '(max-width: 655px)' });
-  const isTabletOrDesktop = useMediaQuery({ query: '(max-width: 1455px)' });
-  const cardsToShow = isTabletOrDesktop ? 2 : 3;
   const cardWidth = isMobile ? 270 : 470;
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => Math.max(0, prev - 1));
+    setCurrentIndex((prev) => (prev - 1 + trendings.length) % trendings.length);
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) =>
-      Math.min(trendings.length - cardsToShow, prev + 1)
-    );
+    setCurrentIndex((prev) => (prev + 1) % trendings.length);
   };
 
   const trendingSlice = () => {
-    const end = (currentIndex + cardsToShow) % trendings.length;
+    const end = (currentIndex + 3) % trendings.length;
     return end > currentIndex
       ? trendings.slice(currentIndex, end)
-      : [...trendings.slice(currentIndex), ...trendings.slice(0, end)];
+      : [...trendings.slice(currentIndex), ...trendings.slice(0, 3)];
   };
 
   return (
@@ -83,22 +79,20 @@ const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
                 </div>
               </div>
             ))}
-            {currentIndex > 0 && (
-              <TrendingBtn
-                onClick={handlePrev}
-                iconSrc={'../assets/icon-chevron-left-solid.svg'}
-                alt="button left icon"
-                position="left"
-              />
-            )}
-            {currentIndex + cardsToShow < trendings.length && (
-              <TrendingBtn
-                onClick={handleNext}
-                iconSrc={'../assets/icon-chevron-right-solid.svg'}
-                alt="button right icon"
-                position="right"
-              />
-            )}
+
+            <TrendingBtn
+              onClick={handlePrev}
+              iconSrc={'../assets/icon-chevron-left-solid.svg'}
+              alt="button left icon"
+              position="left"
+            />
+
+            <TrendingBtn
+              onClick={handleNext}
+              iconSrc={'../assets/icon-chevron-right-solid.svg'}
+              alt="button right icon"
+              position="right"
+            />
           </div>
         </div>
       </div>

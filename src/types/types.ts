@@ -63,6 +63,10 @@ export interface MediaProps {
   media: Media[];
 }
 
+export interface DataProps {
+  data: Media[];
+}
+
 export interface UseFilterWithIdReturn {
   media: Media[];
   bookmarked: Media[];
