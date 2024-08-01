@@ -9,15 +9,15 @@ const CardsWrapper: React.FC<CardsWrapperProps> = ({
   title,
 }) => {
   return (
-    <div className="page-container">
+    <div className="page-container pr-4">
       {isSearching ? (
         <>
-          <h1>Recherche {title}</h1>
+          <h1 className="text-[32px] mb-[25px]">Recherche {title}</h1>
           <Cards data={filteredData} />
         </>
       ) : (
         <>
-          <h1>{title}</h1>
+          <h1 className="text-[32px] mb-[25px]">{title}</h1>
           <Cards data={datas} />
         </>
       )}

@@ -24,7 +24,7 @@ const Series = () => {
   if (error) return <Error />;
 
   return (
-    <section className="pl-[156px] mt-[2%]">
+    <section className="pt-1 h-screen">
       <Search
         searchBar={searchBar}
         handleChange={handleChange}

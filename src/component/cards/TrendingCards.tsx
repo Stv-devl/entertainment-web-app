@@ -3,11 +3,15 @@ import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { TrendingProps } from '@/types/types';
 import TrendingBtn from '../buttons/TrendingBtn';
+import BookmarkedIc from '../icon/BookmarkedIc';
+import LegendWrapper from './LegendWrapper';
 
 const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const isMobile = useMediaQuery({ query: '(max-width: 655px)' });
+  const isTabletOrDesktop = useMediaQuery({ query: '(max-width: 1225px)' });
+  const cardsToShow = isTabletOrDesktop ? 2 : 3;
   const cardWidth = isMobile ? 270 : 470;
 
   const handlePrev = () => {
@@ -19,10 +23,10 @@ const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
   };
 
   const trendingSlice = () => {
-    const end = (currentIndex + 3) % trendings.length;
+    const end = (currentIndex + cardsToShow) % trendings.length;
     return end > currentIndex
       ? trendings.slice(currentIndex, end)
-      : [...trendings.slice(currentIndex), ...trendings.slice(0, 3)];
+      : [...trendings.slice(currentIndex), ...trendings.slice(0, end)];
   };
 
   return (
@@ -43,39 +47,9 @@ const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
                     />
                   )}
                 </div>
-                <div className="flex items-center justify-center absolute top-4 right-4 w-[32px] h-[32px] z-10 bg-[#161D2F] rounded-full transform rotate-2 opacity-50 cursor-pointer hover:bg-white hover:opacity-100 transition-colors duration-500 group">
-                  <svg
-                    width="12"
-                    height="14"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="fill-current text-white group-hover:text-black transition-colors duration-500"
-                  >
-                    <path
-                      d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      fill="none"
-                    />
-                  </svg>
-                </div>
+                <BookmarkedIc />
                 <div className="absolute bottom-6 left-4">
-                  <div className="flex gap-[8px]">
-                    <p className="year">{item.year}</p>
-                    <p className="dot">.</p>
-                    <div className="flex items-center gap-[6px]">
-                      <Image
-                        src={'../assets/icon-category-movie.svg'}
-                        alt={`category movie icon`}
-                        width={12}
-                        height={12}
-                        className="w-[12px] h-[12px]"
-                      />
-                      <p>{item.category}</p>
-                    </div>
-                    <p className="dot">.</p>
-                    <p className="rating">{item.rating}</p>
-                  </div>
-                  <p className="text-2xl">{item.title}</p>
+                  <LegendWrapper data={item} />
                 </div>
               </div>
             ))}

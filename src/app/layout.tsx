@@ -21,9 +21,12 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#10141E] w-full text-white font-outfit text-[15px] font-light">
+      <body className="h-screen w-full flex flex-col bg-[#10141E]  text-white font-outfit text-[15px] font-light  ">
+        <div className="flex-grow"></div>
         <Banner />
-        <main>{children}</main>
+        <main className="ml-[156px] h-[97.5vh] overflow-y-auto  ">
+          {children}
+        </main>
       </body>
     </html>
   );
