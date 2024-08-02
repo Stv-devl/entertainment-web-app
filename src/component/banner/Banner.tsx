@@ -36,7 +36,7 @@ const Banner = () => {
               width={33}
               height={27}
               priority
-              className="w-[33px] h-[27px]"
+              className="w-auto h-auto"
             />
             <div className="flex flex-col gap-[40px]">
               <Link href="/home">

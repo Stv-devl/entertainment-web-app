@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { TrendingProps } from '@/types/types';
 import TrendingBtn from '../buttons/TrendingBtn';
-import LegendWrapper from './LegendWrapper';
-import Play from './Play';
+import LegendWrapper from './cardElements/CardLegend';
+import Play from './cardElements/CardPlay';
 
 const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,22 +37,19 @@ const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
           <div className="relative flex gap-[40px]">
             {trendingSlice().map((item, index) => (
               <div
-                className="relative flex-none"
+                className={`relative flex-none w-[${cardWidth}px] h-auto rounded-lg overflow-hidden`}
                 key={`trending${index}`}
                 onMouseEnter={() => setHoverIndex(index)}
                 onMouseLeave={() => setHoverIndex(null)}
               >
-                <div className="w-full">
-                  {item.thumbnail?.trending && (
-                    <Image
-                      src={item.thumbnail.trending.small}
-                      alt={`${item.title} ${item.category}`}
-                      width={cardWidth}
-                      height={130}
-                      className="rounded-lg"
-                    />
-                  )}
-                </div>
+                {item.thumbnail?.trending && (
+                  <img
+                    src={item.thumbnail.trending.small}
+                    alt={`${item.title} ${item.category}`}
+                    className="object-cover rounded-lg"
+                  />
+                )}
+
                 <div
                   className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-1000 ${
                     hoverIndex === index ? 'opacity-100' : 'opacity-0'

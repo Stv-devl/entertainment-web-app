@@ -1,7 +1,7 @@
 import { DataProps } from '@/types/types';
 import React, { useState } from 'react';
-import LegendWrapper from './LegendWrapper';
-import Play from './Play';
+import LegendWrapper from './cardElements/CardLegend';
+import Play from './cardElements/CardPlay';
 import Image from 'next/image';
 
 const Cards: React.FC<DataProps> = ({ data }) => {

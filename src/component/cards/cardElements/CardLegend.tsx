@@ -6,7 +6,7 @@ interface DataProps {
   data: Media;
 }
 
-const LegendWrapper: React.FC<DataProps> = ({ data }) => {
+const CardLegend: React.FC<DataProps> = ({ data }) => {
   return (
     <div className="texte-wrapper">
       <div className="flex gap-[8px] mt-[8px]">
@@ -34,4 +34,4 @@ const LegendWrapper: React.FC<DataProps> = ({ data }) => {
   );
 };
 
-export default LegendWrapper;
+export default CardLegend;

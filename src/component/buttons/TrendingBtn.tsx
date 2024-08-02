@@ -18,7 +18,7 @@ const TrendingBtn: React.FC<btnTrendingProps> = ({
       <Image
         src={iconSrc}
         alt={alt}
-        width={14}
+        width={12}
         height={14}
         className="filter invert transition duration-300 group-hover:invert-0 group-hover:brightness-0 w-[12px] h-[14px]"
       />

@@ -1,4 +1,4 @@
-const Play = () => {
+const CardPlay = () => {
   return (
     <div className="flex items-center justify-center gap-[19px] bg-slate-800 opacity-75 w-[117px] h-[48px] cursor-pointer rounded-full ">
       <svg
@@ -21,4 +21,4 @@ const Play = () => {
   );
 };
 
-export default Play;
+export default CardPlay;

@@ -16,7 +16,7 @@ const Search: React.FC<SearchProps> = ({
         alt="search bar icon"
         width={32}
         height={32}
-        className="object-contain"
+        className="object-contain w-[32px] h-[32px]"
       />
       <div className="w-[100%]">
         <Input
