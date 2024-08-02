@@ -34,7 +34,7 @@ const Home = () => {
         {isSearching ? (
           <Cards data={filteredData} />
         ) : (
-          <div className="page-container pr-4">
+          <div className="page-container">
             <Trending media={media} />
             <Recommended media={media} />
           </div>

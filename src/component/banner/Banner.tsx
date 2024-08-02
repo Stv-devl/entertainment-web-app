@@ -3,9 +3,14 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import useAuthStore from '../../stores/useAuthStore';
 import useIsAuthenticated from '../../hook/auth/useIsAuthenticated';
 import { useLogout } from '@/hook/auth/useLogout';
+import IconHome from '../icon/IconHome';
+import IconMovie from '../icon/IconMovie';
+import IconSerie from '../icon/IconSerie';
+import IconBookmarked from '../icon/IconBookmarked';
 
 const Banner = () => {
   const { token } = useAuthStore((state) => ({
@@ -14,6 +19,7 @@ const Banner = () => {
 
   const { isAuthenticated, setIsAuthenticated } = useIsAuthenticated();
   const logout = useLogout();
+  const pathname = usePathname();
 
   const handleLogout = () => {
     logout(setIsAuthenticated);
@@ -27,42 +33,23 @@ const Banner = () => {
             <Image
               src="/assets/logo.svg"
               alt="logo title"
-              width={32}
-              height={25.6}
+              width={33}
+              height={27}
               priority
+              className="w-[33px] h-[27px]"
             />
             <div className="flex flex-col gap-[40px]">
               <Link href="/home">
-                <Image
-                  src="/assets/icon-nav-home.svg"
-                  alt="Icon home link"
-                  width={20}
-                  height={20}
-                />
+                <IconHome isSelected={pathname === '/home'} />
               </Link>
               <Link href="/movies">
-                <Image
-                  src="/assets/icon-nav-movies.svg"
-                  alt="Icon movies link"
-                  width={20}
-                  height={20}
-                />
+                <IconMovie isSelected={pathname === '/movies'} />
               </Link>
               <Link href="/series">
-                <Image
-                  src="/assets/icon-nav-tv-series.svg"
-                  alt="Icon series link"
-                  width={20}
-                  height={20}
-                />
+                <IconSerie isSelected={pathname === '/series'} />
               </Link>
               <Link href="/bookmarked">
-                <Image
-                  src="/assets/icon-nav-bookmark.svg"
-                  alt="Icon bookmark description"
-                  width={20}
-                  height={20}
-                />
+                <IconBookmarked isSelected={pathname === '/bookmarked'} />
               </Link>
             </div>
           </div>
@@ -72,6 +59,8 @@ const Banner = () => {
               alt="Icon user avatar"
               width={50}
               height={50}
+              priority
+              className="w-[50px] h-[50px]"
             />
             <button
               className="text-[#FC4747] font-semibold tracking-wide mt-[10px]"

@@ -78,6 +78,10 @@ export interface TrendingProps {
   trendings: Media[];
 }
 
+export interface BookmarkedProps {
+  bookmarked: Media[];
+}
+
 export interface CardsWrapperProps {
   isSearching: boolean;
   filteredData: Media[];
