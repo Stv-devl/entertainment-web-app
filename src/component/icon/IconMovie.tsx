@@ -9,6 +9,7 @@ const IconMovie = ({ isSelected = false }) => {
       className={`transition duration-500  fill-current ${
         isSelected ? 'text-white' : 'text-gray-500  hover:text-red-500'
       }`}
+      aria-hidden="true"
     >
       <path
         xmlns="http://www.w3.org/2000/svg"

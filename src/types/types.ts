@@ -81,6 +81,9 @@ export interface TrendingProps {
 export interface BookmarkedProps {
   bookmarked: Media[];
 }
+export interface IsBookmarked {
+  isBookmarked: boolean;
+}
 
 export interface CardsWrapperProps {
   isSearching: boolean;
