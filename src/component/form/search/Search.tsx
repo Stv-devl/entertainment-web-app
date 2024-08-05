@@ -10,13 +10,13 @@ const Search: React.FC<SearchProps> = ({
   placeholder,
 }) => {
   return (
-    <div className="flex gap-[14px] mb-[25px] pt-[25px]">
+    <div className="flex gap-[8px] items-center mb-[25px] sm:pt-[10px] lg-pt-[25px]">
       <Image
         src="/assets/icon-search.svg"
         alt="search bar icon"
         width={32}
         height={32}
-        className="object-contain w-[32px] h-[32px]"
+        className="object-contain sm:w-[32px] sm:h-[32px] w-[24px] h-[24px]"
       />
       <div className="w-[100%]">
         <Input

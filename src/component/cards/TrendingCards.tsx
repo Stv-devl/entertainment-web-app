@@ -10,11 +10,6 @@ const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
-  const isMobile = useMediaQuery({ query: '(max-width: 655px)' });
-  const isTabletOrDesktop = useMediaQuery({ query: '(max-width: 1225px)' });
-  const cardsToShow = isTabletOrDesktop ? 2 : 3;
-  const cardWidth = isMobile ? 270 : 470;
-
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + trendings.length) % trendings.length);
   };
@@ -24,7 +19,7 @@ const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
   };
 
   const trendingSlice = () => {
-    const end = (currentIndex + cardsToShow) % trendings.length;
+    const end = (currentIndex + 3) % trendings.length;
     return end > currentIndex
       ? trendings.slice(currentIndex, end)
       : [...trendings.slice(currentIndex), ...trendings.slice(0, end)];
@@ -34,10 +29,10 @@ const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
     trendings.length > 0 && (
       <div className="flex items-center">
         <div className="overflow-hidden">
-          <div className="relative flex gap-[40px]">
+          <div className="relative flex gap-[16px] sm:gap-[40px]">
             {trendingSlice().map((item, index) => (
               <div
-                className={`relative flex-none w-[${cardWidth}px] h-auto rounded-lg overflow-hidden`}
+                className={`relative flex-none w-[240px] sm:w-[470px] h-auto rounded-lg overflow-hidden`}
                 key={`trending${index}`}
                 onMouseEnter={() => setHoverIndex(index)}
                 onMouseLeave={() => setHoverIndex(null)}

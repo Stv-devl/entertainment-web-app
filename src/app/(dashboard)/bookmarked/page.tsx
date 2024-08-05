@@ -18,7 +18,7 @@ const BookMarked = () => {
   if (error) return <div>Error: </div>;
 
   return (
-    <section className="pt-1 h-screen">
+    <section className="h-screen">
       <Search
         searchBar={searchBar}
         handleChange={handleChange}

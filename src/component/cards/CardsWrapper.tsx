@@ -12,12 +12,12 @@ const CardsWrapper: React.FC<CardsWrapperProps> = ({
     <div className="page-container pr-4">
       {isSearching ? (
         <>
-          <h1 className="text-[32px] mb-[25px]">Recherche {title}</h1>
+          <h1 className="text-xl sm:text-3xl mb-[25px]">Recherche {title}</h1>
           <Cards data={filteredData} />
         </>
       ) : (
         <>
-          <h1 className="text-[32px] mb-[25px]">{title}</h1>
+          <h1 className="text-xl sm:text-3xl mb-[25px]">{title}</h1>
           <Cards data={datas} />
         </>
       )}

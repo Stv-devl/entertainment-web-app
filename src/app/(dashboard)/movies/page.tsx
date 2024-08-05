@@ -24,7 +24,7 @@ const Movies = () => {
   if (error) return <Error />;
 
   return (
-    <section className="pt-1 h-screen">
+    <section className=" h-screen">
       <Search
         searchBar={searchBar}
         handleChange={handleChange}

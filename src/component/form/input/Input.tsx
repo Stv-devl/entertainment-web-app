@@ -35,10 +35,10 @@ const Input: React.FC<InputProps> = ({
         className={`w-full border-b ${borderClass}   
           ${
             name === 'search'
-              ? 'bg-[#10141E]  text-2xl placeholder:text-2xl'
-              : 'bg-[#161D2F] placeholder:text-normal'
+              ? 'bg-[#10141E] text-base sm:text-2xl placeholder:text-base sm:placeholder:text-2xl'
+              : 'bg-[#161D2F] placeholder:text-base'
           }  
-          focus:outline-none placeholder:text-gray-5m00 pl-[10px] h-[36px]`}
+          focus:outline-none placeholder:text-gray-5m00 sm:pl-[10px] pl-[5px] h-[36px]`}
         type={type}
         id={name}
         name={name}

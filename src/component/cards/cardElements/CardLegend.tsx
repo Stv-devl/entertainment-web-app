@@ -10,7 +10,7 @@ const CardLegend: React.FC<DataProps> = ({ data }) => {
   return (
     <div className="texte-wrapper">
       <div className="flex gap-[8px] mt-[8px]">
-        <p className="year">{data.year}</p>
+        <p className="text-xs sm:text-base">{data.year}</p>
         <p className="dot">.</p>
         <div className="flex items-center gap-[6px]">
           <Image
@@ -24,12 +24,12 @@ const CardLegend: React.FC<DataProps> = ({ data }) => {
             height={12}
             className="w-[12px] h-[12px]"
           />
-          <p className="type">{data.category}</p>
+          <p className="text-xs sm:text-base">{data.category}</p>
         </div>
         <p className="dot">.</p>
-        <p className="rating">{data.rating}</p>
+        <p className="text-xs sm:text-base">{data.rating}</p>
       </div>
-      <p className="text-lg	">{data.title}</p>
+      <p className="text-sm sm:text-lg	">{data.title}</p>
     </div>
   );
 };
