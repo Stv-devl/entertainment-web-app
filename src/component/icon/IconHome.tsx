@@ -4,11 +4,10 @@ const IconHome = ({ isSelected = false }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
+      viewBox="0 0 20 20"
       className={`transition duration-500  fill-current ${
         isSelected ? 'text-white' : 'text-gray-500  hover:text-red-500'
-      }`}
+      } w-[16px] h-[16px] sm:w-[20px] sm:h-[20px] `}
       aria-hidden="true"
     >
       <path

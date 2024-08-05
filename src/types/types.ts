@@ -119,3 +119,7 @@ export interface btnTrendingProps {
   alt: string;
   position: string;
 }
+
+export type linkWrapperProp = {
+  pathname: string;
+};

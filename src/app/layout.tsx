@@ -22,9 +22,10 @@ export default function RootLayout({
         />
       </head>
       <body className="h-screen w-full flex flex-col bg-[#10141E]  text-white font-outfit text-[15px] font-light  ">
-        <div className="flex-grow"></div>
+        <div className="h-[2%]"></div>
         <Banner />
-        <main className="ml-[156px] h-[97.5vh] overflow-y-auto  ">
+        <div className="xl:hidden h-8"></div>
+        <main className="pl-[2%] xl:ml-[156px] xl:h-[97.5vh] overflow-y-auto  ">
           {children}
         </main>
       </body>
