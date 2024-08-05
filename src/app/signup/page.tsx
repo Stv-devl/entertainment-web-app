@@ -19,11 +19,11 @@ const SignUp = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-[83px] min-h-screen">
       <Image
-        className="mt-[5%]"
+        className="w-auto h-auto mt-[5%] "
         src="/assets/logo.svg"
         alt="logo title"
         width={32}
-        height={25.6}
+        height={27}
         priority
       />
       <div className="flex flex-col justify-center items-start gap-[40px] px-[32px] py-[32px] mx-[5%] w-full max-w-[400px] bg-[#161D2F] rounded-[15px] ">
@@ -75,16 +75,14 @@ const SignUp = (): JSX.Element => {
 
           <button
             type="submit"
-            className="bg-[#FC4747] duration-500 ease-in-out hover:bg-slate-50 hover:text-black font-normal w-full h-[48px] rounded-lg"
+            className="bg-[#FC4747] duration-500 ease-in-out hover:bg-slate-50 hover:text-black text-base w-full h-[48px] rounded-lg"
           >
             Sign Up
           </button>
-          <p className="font-normal px-[16%]">
+          <p className="text-base px-[5%] sm:px-[10%]">
             Already have an account?{' '}
             <Link href="/login">
-              <span className="text-[#FC4747] font-normal ml-[10px]">
-                Login
-              </span>
+              <span className="text-[#FC4747] text-base ml-[5px]">Login</span>
             </Link>
           </p>
         </form>

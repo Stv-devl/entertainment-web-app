@@ -9,7 +9,7 @@ const Cards: React.FC<DataProps> = ({ data }) => {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   return (
-    <div className="grid grid-cols-4 gap-x-[2%] gap-y-[32px] max-w-[1490px] ">
+    <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-x-[5%] sm:gap-x-[4%] gap-y-[16px] sm:gap-y-[32px] max-w-[1490px] ">
       {data &&
         data.map((data, index) => (
           <div

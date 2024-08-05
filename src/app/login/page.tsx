@@ -19,15 +19,15 @@ const Login = () => {
   return (
     <section className="flex flex-col items-center gap-[83px] min-h-screen">
       <Image
-        className="mt-[5%]"
+        className="w-auto h-auto mt-[5%] "
         src="/assets/logo.svg"
         alt="logo title"
-        width={32}
-        height={25.6}
+        width={33}
+        height={27}
         priority
       />
       <div className="flex flex-col justify-center items-start gap-[40px] px-[32px] py-[32px] mx-[5%]  w-full max-w-[400px] bg-[#161D2F]  rounded-[15px] ">
-        <h1 className="text-[32px]">Login</h1>
+        <h1 className="text-3xl">Login</h1>
         <form
           className="flex flex-col gap-[20px] w-full"
           onSubmit={handleSubmit}
@@ -57,16 +57,14 @@ const Login = () => {
           </span>
           <button
             type="submit"
-            className="bg-[#FC4747] duration-500 ease-in-out hover:bg-slate-50 hover:text-black font-normal w-full h-[48px] rounded-lg"
+            className="bg-[#FC4747] duration-500 ease-in-out hover:bg-slate-50 hover:text-black text-base w-full h-[48px] rounded-lg"
           >
             Login to your account
           </button>
-          <p className="font-normal px-[16%]">
+          <p className="text-base px-[5%] sm:px-[10%]">
             Don't have an account?{' '}
             <Link href="/signup">
-              <span className="text-[#FC4747] font-normal ml-[10px]">
-                Sign up
-              </span>
+              <span className="text-[#FC4747] text-base ml-[5px]">Sign up</span>
             </Link>
           </p>
         </form>

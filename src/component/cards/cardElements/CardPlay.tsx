@@ -1,13 +1,11 @@
 const CardPlay = () => {
   return (
-    <div className="flex items-center justify-center gap-[19px] bg-slate-800 opacity-75 w-[117px] h-[48px] cursor-pointer rounded-full ">
+    <div className="flex items-center justify-center gap-[19px] bg-slate-800 opacity-75 w-[90px] h-[35px] sm:w-[117px] sm:h-[48px] cursor-pointer rounded-full ">
       <svg
-        width="30"
-        height="30"
         viewBox="0 0 30 30"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-lg "
+        className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
       >
         <path
           fillRule="evenodd"

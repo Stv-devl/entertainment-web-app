@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
 import { TrendingProps } from '@/types/types';
 import TrendingBtn from '../buttons/TrendingBtn';
 import LegendWrapper from './cardElements/CardLegend';
 import Play from './cardElements/CardPlay';
+import CardBookmarked from './cardElements/CardBookmarked';
 
 const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -52,15 +52,7 @@ const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
                 >
                   <Play />
                 </div>
-                <div className="flex items-center justify-center absolute top-4 right-4 w-[32px] h-[32px] z-10 bg-[#161D2F] rounded-full transform rotate-2 opacity-50 cursor-pointer hover:bg-white hover:opacity-100 transition-colors duration-500 group">
-                  <Image
-                    src={'../assets/icon-bookmark-empty.svg'}
-                    alt={'bookmarked icon'}
-                    width={12}
-                    height={14}
-                    className="filter invert transition duration-500 group-hover:invert-0 group-hover:brightness-0 w-[12px] h-[14px]"
-                  />
-                </div>
+                <CardBookmarked isBookmarked={item.isBookmarked} />
                 <div className="absolute bottom-6 left-4">
                   <LegendWrapper data={item} />
                 </div>

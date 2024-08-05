@@ -9,7 +9,7 @@ interface DataProps {
 const CardLegend: React.FC<DataProps> = ({ data }) => {
   return (
     <div className="texte-wrapper">
-      <div className="flex gap-[8px] mt-[8px]">
+      <div className="flex items-center gap-[4px] sm:gap-[8px] mt-[8px]">
         <p className="text-xs sm:text-base">{data.year}</p>
         <p className="dot">.</p>
         <div className="flex items-center gap-[6px]">

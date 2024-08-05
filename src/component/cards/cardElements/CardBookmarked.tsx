@@ -4,7 +4,7 @@ import React from 'react';
 
 const CardBookmarked: React.FC<IsBookmarked> = ({ isBookmarked }) => {
   return (
-    <div className="flex items-center justify-center absolute top-4 right-4 w-[32px] h-[32px] z-10 bg-[#161D2F] rounded-full transform rotate-1 opacity-50 cursor-pointer hover:bg-white hover:opacity-100 transition-colors duration-500 group">
+    <div className="flex items-center justify-center absolute top-2 sm:top-4 right-4 w-[32px] h-[32px] z-10 bg-[#161D2F] rounded-full transform rotate-1 opacity-50 cursor-pointer hover:bg-white hover:opacity-100 transition-colors duration-500 group">
       <Image
         src={`../assets/icon-bookmark-${!isBookmarked ? 'empty' : 'full'}.svg`}
         alt={`Bookmarked icon ${
