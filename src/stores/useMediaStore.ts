@@ -8,7 +8,9 @@ interface MediaDataState {
   media: Media[];
   loading: boolean;
   error: string | null;
+
   fetchData: () => Promise<void>;
+  toggleBookmark: (userId: string, movieTitle: string) => Promise<void>;
 }
 
 const useMediaStore = create<MediaDataState>((set) => ({

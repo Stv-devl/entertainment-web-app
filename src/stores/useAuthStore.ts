@@ -5,21 +5,26 @@ interface AuthState {
   token: string | null;
   userId: string | null;
   setUserId: (userId: string) => void;
-  login: (token: string) => void;
+  login: (token: string, userId: string) => void;
   logout: () => void;
 }
 
 const useAuthStore = create<AuthState>((set) => ({
   token: Cookies.get('token') || null,
-  userId: null,
-  setUserId: (userId) => set({ userId }),
-  login: (token) => {
+  userId: Cookies.get('userId') || null,
+  setUserId: (userId) => {
+    Cookies.set('userId', userId, { expires: 1 });
+    set({ userId });
+  },
+  login: (token, userId) => {
     Cookies.set('token', token, { expires: 1 });
-    set({ token });
+    Cookies.set('userId', userId, { expires: 1 });
+    set({ token, userId });
   },
   logout: () => {
     Cookies.remove('token');
-    set({ token: null });
+    Cookies.remove('userId');
+    set({ token: null, userId: null });
   },
 }));
 

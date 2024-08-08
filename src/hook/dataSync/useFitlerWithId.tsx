@@ -1,13 +1,17 @@
 'use client';
 
-import React, { useMemo } from 'react';
-import useMediaData from './useMediaData';
-import { Users, Media, UseFilterWithIdReturn } from '@/types/types';
-import useUserId from './useUserId';
+import React, { useEffect, useMemo } from 'react';
+import { Users, UseFilterWithIdReturn } from '@/types/types';
+import useMediaStore from '@/stores/useMediaStore';
+import useAuthStore from '@/stores/useAuthStore';
 
 const useFilterWithId = (): UseFilterWithIdReturn => {
-  const { media, users, loading, error } = useMediaData();
-  const userId = useUserId();
+  const { users, media, loading, error, fetchData } = useMediaStore();
+  const { userId } = useAuthStore();
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const user = useMemo(() => {
     const foundUser = Array.isArray(users)
@@ -16,17 +20,11 @@ const useFilterWithId = (): UseFilterWithIdReturn => {
     return foundUser;
   }, [users, userId]);
 
-  console.log(user);
-
-  const bookmarkedArray = user && user ? user.bookmarkedItems : [];
+  const bookmarkedArray = user?.bookmarkedItems ?? [];
 
   const bookmarked = useMemo(() => {
-    return Array.isArray(media)
-      ? media.filter(
-          (item: Media) =>
-            bookmarkedArray && bookmarkedArray.includes(item.title)
-        )
-      : [];
+    if (!Array.isArray(media)) return [];
+    return media.filter((item) => bookmarkedArray.includes(item.title));
   }, [media, bookmarkedArray]);
 
   return { media, user, bookmarked, loading, error };
