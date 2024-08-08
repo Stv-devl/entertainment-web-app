@@ -1,36 +1,28 @@
 import { useCallback, useEffect, useState } from 'react';
-import updateBookmark from '../../features/apiBookmark';
 import { Users } from '@/types/types';
+import useMediaStore from '@/stores/useMediaStore';
 
 const useBookmarked = (user: Users) => {
   const userId = user && user.id;
-
+  const { users, toggleBookmark } = useMediaStore();
   const [bookmarkedItems, setBookmarkedItems] = useState<string[]>([]);
 
   useEffect(() => {
-    if (user && user.bookmarkedItems) {
-      setBookmarkedItems(user.bookmarkedItems);
+    const currentUser = users.find((u) => u.id === userId);
+    if (currentUser && currentUser.bookmarkedItems) {
+      setBookmarkedItems(currentUser.bookmarkedItems);
     }
-  }, [user]);
+  }, [users, userId]);
 
-  const toggleBookmark = useCallback(
+  const handleToggleBookmark = useCallback(
     async (movieTitle: string) => {
       if (!userId) return;
-
-      try {
-        const updatedUser = await updateBookmark(userId, movieTitle);
-        if (updatedUser) {
-          setBookmarkedItems(updatedUser.bookmarkedItems);
-        }
-        return updatedUser;
-      } catch (error) {
-        console.error('Error toggling bookmark:', error);
-      }
+      await toggleBookmark(userId, movieTitle);
     },
-    [userId]
+    [toggleBookmark, userId]
   );
 
-  return { bookmarkedItems, toggleBookmark };
+  return { bookmarkedItems, handleToggleBookmark };
 };
 
 export default useBookmarked;

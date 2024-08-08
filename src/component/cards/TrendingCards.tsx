@@ -10,7 +10,7 @@ const TrendingCards: React.FC<MediaProps> = ({ media, user }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
-  const { bookmarkedItems, toggleBookmark } = useIsBookmarked(user);
+  const { bookmarkedItems, handleToggleBookmark } = useIsBookmarked(user);
 
   const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
@@ -59,7 +59,7 @@ const TrendingCards: React.FC<MediaProps> = ({ media, user }) => {
                     bookmarkedItems && bookmarkedItems.includes(item.title)
                   }
                   title={item.title}
-                  onToggleBookmark={toggleBookmark}
+                  onToggleBookmark={handleToggleBookmark}
                 />
                 <div className="absolute bottom-6 left-4">
                   <LegendWrapper data={item} />

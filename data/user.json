@@ -15,10 +15,10 @@
     "password": "usertest1234",
     "username": "Dabrou",
     "bookmarkedItems": [
-      "Beyond Earth",
       "Bottom Gear",
       "Undiscovered Cities",
-      "1998"
+      "1998",
+      "Beyond Earth"
     ]
   }
 ]

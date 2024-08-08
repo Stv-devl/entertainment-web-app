@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { Media, Users } from '../types/types';
 import apiService from '../features/apiDatas';
+import updateBookmark from '@/features/apiBookmark';
 
 interface MediaDataState {
   users: Users[];
@@ -15,7 +16,6 @@ const useMediaStore = create<MediaDataState>((set) => ({
   media: [],
   loading: false,
   error: null,
-
   fetchData: async () => {
     set({ loading: true, error: null });
     try {
@@ -27,6 +27,21 @@ const useMediaStore = create<MediaDataState>((set) => ({
       } else {
         set({ error: 'An unknown error occurred', loading: false });
       }
+    }
+  },
+
+  toggleBookmark: async (userId: string, movieTitle: string) => {
+    try {
+      const updatedUser = await updateBookmark(userId, movieTitle);
+      if (updatedUser) {
+        set((state) => ({
+          users: state.users.map((user) =>
+            user.id === userId ? updatedUser : user
+          ),
+        }));
+      }
+    } catch (error) {
+      console.error('Error toggling bookmark:', error);
     }
   },
 }));
