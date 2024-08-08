@@ -16,8 +16,6 @@ const Home = () => {
   const { media, user, loading, error }: UseFilterWithIdReturn =
     useFitlerWithId();
 
-  console.log(user);
-
   const { searchBar, filteredData, handleChange, isSearching } =
     useManageFilter({
       media,

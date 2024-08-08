@@ -8,7 +8,7 @@ const useMediaData = () => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, []);
 
   return { users, media, loading, error };
 };

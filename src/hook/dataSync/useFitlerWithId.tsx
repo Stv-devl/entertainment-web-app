@@ -13,10 +13,12 @@ const useFilterWithId = (): UseFilterWithIdReturn => {
     const foundUser = Array.isArray(users)
       ? users.find((get: Users) => get.id === userId) || null
       : null;
-    return foundUser ? [foundUser] : null;
+    return foundUser;
   }, [users, userId]);
 
-  const bookmarkedArray = user && user[0] ? user[0].bookmarkedItems : [];
+  console.log(user);
+
+  const bookmarkedArray = user && user ? user.bookmarkedItems : [];
 
   const bookmarked = useMemo(() => {
     return Array.isArray(media)

@@ -1,19 +1,17 @@
 import { useCallback, useEffect, useState } from 'react';
 import updateBookmark from '../../features/apiBookmark';
-import useUserId from './useUserId';
+import { Users } from '@/types/types';
 
-const useBookmarked = (user) => {
-  const userId = useUserId();
+const useBookmarked = (user: Users) => {
+  const userId = user && user.id;
 
-  const [bookmarkedItems, setBookmarkedItems] = useState<string[]>(
-    user?.bookmarkedItems ?? []
-  );
+  const [bookmarkedItems, setBookmarkedItems] = useState<string[]>([]);
 
   useEffect(() => {
-    if (user && user.bookmarkedItems !== bookmarkedItems) {
-      setBookmarkedItems(user.bookmarkedItems ?? []);
+    if (user && user.bookmarkedItems) {
+      setBookmarkedItems(user.bookmarkedItems);
     }
-  }, [user, bookmarkedItems]);
+  }, [user]);
 
   const toggleBookmark = useCallback(
     async (movieTitle: string) => {

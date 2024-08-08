@@ -55,7 +55,9 @@ const TrendingCards: React.FC<MediaProps> = ({ media, user }) => {
                   <Play />
                 </div>
                 <CardBookmarked
-                  isBookmarked={bookmarkedItems.includes(item.title)}
+                  isBookmarked={
+                    bookmarkedItems && bookmarkedItems.includes(item.title)
+                  }
                   title={item.title}
                   onToggleBookmark={toggleBookmark}
                 />

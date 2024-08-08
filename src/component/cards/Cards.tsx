@@ -36,7 +36,9 @@ const Cards: React.FC<MediaProps> = ({ media, user }) => {
                 <Play />
               </div>
               <CardBookmarked
-                isBookmarked={bookmarkedItems.includes(data.title)}
+                isBookmarked={
+                  bookmarkedItems && bookmarkedItems.includes(data.title)
+                }
                 title={data.title}
                 onToggleBookmark={toggleBookmark}
               />

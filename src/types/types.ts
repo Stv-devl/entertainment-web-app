@@ -61,12 +61,12 @@ export interface SearchProps {
 
 export interface MediaProps {
   media: Media[];
-  user: Users[] | null;
+  user: Users | null;
 }
 
 export interface UseFilterWithIdReturn {
   media: Media[];
-  user: Users[] | null;
+  user: Users | null;
   bookmarked: Media[];
   loading: boolean;
   error: any;
@@ -86,7 +86,7 @@ export interface CardsWrapperProps {
   isSearching: boolean;
   filteredData: Media[];
   media: Media[];
-  user: Users[] | null;
+  user: Users | null;
   title: string;
 }
 
