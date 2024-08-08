@@ -69,6 +69,7 @@ export interface DataProps {
 
 export interface UseFilterWithIdReturn {
   media: Media[];
+  user: Users | null;
   bookmarked: Media[];
   loading: boolean;
   error: any;

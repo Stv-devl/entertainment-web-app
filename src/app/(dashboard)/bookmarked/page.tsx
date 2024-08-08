@@ -6,6 +6,8 @@ import withAuth from '../../../component/withAuth/WithAuth';
 import useManageFilter from '@/hook/dataSync/useFilterMedias';
 import CardsWrapper from '@/component/cards/CardsWrapper';
 import Search from '@/component/form/search/Search';
+import Loading from '@/component/loading/Loading';
+import Error from '@/component/error/Error';
 
 const BookMarked = () => {
   const { bookmarked, loading, error } = useFitlerWithId();
@@ -14,8 +16,9 @@ const BookMarked = () => {
     useManageFilter({
       bookmarked,
     });
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: </div>;
+
+  if (loading) return <Loading />;
+  if (error) return <Error />;
 
   return (
     <section className="h-screen">

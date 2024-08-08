@@ -1,36 +1,39 @@
-import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { TrendingProps } from '@/types/types';
 import TrendingBtn from '../buttons/TrendingBtn';
 import LegendWrapper from './cardElements/CardLegend';
 import Play from './cardElements/CardPlay';
 import CardBookmarked from './cardElements/CardBookmarked';
+import useIsBookmarked from '@/hook/dataSync/useBookmarked';
+import useFitlerWithId from '@/hook/dataSync/useFitlerWithId';
 
-const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
+const TrendingCards: React.FC<TrendingProps> = ({ trendings, user }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
-  const handlePrev = () => {
+  const { bookmarkedItems, toggleBookmark } = useIsBookmarked(user);
+
+  const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + trendings.length) % trendings.length);
-  };
+  }, [trendings.length]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % trendings.length);
-  };
+  }, [trendings.length]);
 
-  const trendingSlice = () => {
+  const trendingSlice = useMemo(() => {
     const end = (currentIndex + 3) % trendings.length;
     return end > currentIndex
       ? trendings.slice(currentIndex, end)
       : [...trendings.slice(currentIndex), ...trendings.slice(0, end)];
-  };
+  }, [currentIndex, trendings]);
 
   return (
     trendings.length > 0 && (
       <div className="flex items-center">
         <div className="overflow-hidden">
           <div className="relative flex gap-[16px] sm:gap-[40px]">
-            {trendingSlice().map((item, index) => (
+            {trendingSlice.map((item, index) => (
               <div
                 className={`relative flex-none w-[240px] sm:w-[470px] h-auto rounded-lg overflow-hidden`}
                 key={`trending${index}`}
@@ -52,7 +55,11 @@ const TrendingCards: React.FC<TrendingProps> = ({ trendings }) => {
                 >
                   <Play />
                 </div>
-                <CardBookmarked isBookmarked={item.isBookmarked} />
+                <CardBookmarked
+                  isBookmarked={bookmarkedItems.includes(item.title)}
+                  title={item.title}
+                  onToggleBookmark={toggleBookmark}
+                />
                 <div className="absolute bottom-6 left-4">
                   <LegendWrapper data={item} />
                 </div>

@@ -1,22 +1,34 @@
 import { create } from 'zustand';
-import type { Media } from '../types/types';
+import { Media, Users } from '../types/types';
+import apiService from '../features/apiDatas';
 
-interface MediaStore {
+interface MediaDataState {
+  users: Users[];
   media: Media[];
   loading: boolean;
   error: string | null;
-  setLoading: (loading: boolean) => void;
-  setError: (error: string | null) => void;
-  setMedia: (media: Media[]) => void;
+  fetchData: () => Promise<void>;
 }
 
-const useMediaStore = create<MediaStore>((set) => ({
+const useMediaStore = create<MediaDataState>((set) => ({
+  users: [],
   media: [],
   loading: false,
   error: null,
-  setLoading: (loading) => set({ loading }),
-  setError: (error) => set({ error }),
-  setMedia: (media) => set({ media }),
+
+  fetchData: async () => {
+    set({ loading: true, error: null });
+    try {
+      const { media, users } = await apiService();
+      set({ media, users, loading: false });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        set({ error: error.message, loading: false });
+      } else {
+        set({ error: 'An unknown error occurred', loading: false });
+      }
+    }
+  },
 }));
 
 export default useMediaStore;

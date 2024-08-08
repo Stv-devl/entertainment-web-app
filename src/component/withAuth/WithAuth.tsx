@@ -1,6 +1,7 @@
 import React, { useEffect, ComponentType } from 'react';
 import { useRouter } from 'next/navigation';
 import useIsAuthenticated from '../../hook/auth/useIsAuthenticated';
+import Loading from '../loading/Loading';
 
 const withAuth = <P extends object>(Component: ComponentType<P>) => {
   const ComponentWithAuth = (props: P) => {
@@ -14,7 +15,7 @@ const withAuth = <P extends object>(Component: ComponentType<P>) => {
     }, [isAuthenticated, router]);
 
     if (isAuthenticated === null) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
 
     if (!isAuthenticated) {

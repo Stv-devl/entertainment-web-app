@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { SignJWT } from 'jose';
 import user from '../../../../data/user.json';
 
-const SECRET_KEY = new TextEncoder().encode(
+const secretKey = new TextEncoder().encode(
   '4a7d1ed414474e4033ac29ccb8653d9b967f70b792c90d43c61b7c9744e4397e'
 );
 
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     const token = await new SignJWT({ email, userId: findUser.id })
       .setProtectedHeader({ alg: 'HS256' })
       .setExpirationTime('1h')
-      .sign(SECRET_KEY);
+      .sign(secretKey);
 
     const response = NextResponse.json(
       { message: 'Authentication successful', token, userId: findUser.id },

@@ -2,15 +2,11 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import useAuthStore from '../../stores/useAuthStore';
 import useIsAuthenticated from '../../hook/auth/useIsAuthenticated';
 import { useLogout } from '@/hook/auth/useLogout';
-import IconHome from '../icon/IconHome';
-import IconMovie from '../icon/IconMovie';
-import IconSerie from '../icon/IconSerie';
-import IconBookmarked from '../icon/IconBookmarked';
+
 import LinkWrapper from './LinkWrapper';
 
 const Banner = () => {
@@ -42,7 +38,7 @@ const Banner = () => {
               priority
               className="w-[25px] h-[20px] lg:w-[32px] lg:h-[25px] xl:w-auto xl-h-auto"
             />
-            <div className="flex gap-[30px] sm:gap-[40px] xl:hidden justify-center flex-grow">
+            <div className="flex gap-[20px] sm:gap-[40px] xl:hidden justify-center flex-grow">
               <LinkWrapper pathname={pathname} />
             </div>
             <div className="hidden xl:flex xl:flex-col xl:gap-[40px]">
