@@ -10,7 +10,7 @@ import Loading from '@/component/loading/Loading';
 import Error from '@/component/error/Error';
 
 const BookMarked = () => {
-  const { bookmarked, loading, error } = useFitlerWithId();
+  const { user, bookmarked, loading, error } = useFitlerWithId();
 
   const { searchBar, filteredData, handleChange, isSearching } =
     useManageFilter({
@@ -30,7 +30,8 @@ const BookMarked = () => {
       <CardsWrapper
         isSearching={isSearching}
         filteredData={filteredData}
-        datas={bookmarked}
+        media={bookmarked}
+        user={user}
         title={'Bookmarked Movies'}
       />
     </section>

@@ -1,19 +1,19 @@
-import { DataProps } from '@/types/types';
+import { MediaProps } from '@/types/types';
 import React, { useState } from 'react';
 import LegendWrapper from './cardElements/CardLegend';
 import Play from './cardElements/CardPlay';
 import CardBookmarked from './cardElements/CardBookmarked';
 import useIsBookmarked from '@/hook/dataSync/useBookmarked';
 
-const Cards: React.FC<DataProps> = ({ data, user }) => {
+const Cards: React.FC<MediaProps> = ({ media, user }) => {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   const { bookmarkedItems, toggleBookmark } = useIsBookmarked(user);
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-x-[5%] sm:gap-x-[4%] gap-y-[16px] sm:gap-y-[32px] max-w-[1490px] ">
-      {data &&
-        data.map((data, index) => {
+      {media &&
+        media.map((data, index) => {
           return (
             <div
               className="relative w-[calc(23.5% - 2%)]"

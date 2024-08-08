@@ -1,11 +1,8 @@
+import { CardBookmarkedProps } from '@/types/types';
 import Image from 'next/image';
 import React from 'react';
 
-interface CardBookmarkedProps {
-  isBookmarked: boolean;
-  title: string;
-  onToggleBookmark: (title: string) => void;
-}
+
 
 const CardBookmarked: React.FC<CardBookmarkedProps> = ({
   isBookmarked,

@@ -16,6 +16,8 @@ const Home = () => {
   const { media, user, loading, error }: UseFilterWithIdReturn =
     useFitlerWithId();
 
+  console.log(user);
+
   const { searchBar, filteredData, handleChange, isSearching } =
     useManageFilter({
       media,
@@ -33,7 +35,7 @@ const Home = () => {
       />
       <>
         {isSearching ? (
-          <Cards data={filteredData} user={user} />
+          <Cards media={filteredData} user={user} />
         ) : (
           <div className="page-container">
             <Trending media={media} user={user} />

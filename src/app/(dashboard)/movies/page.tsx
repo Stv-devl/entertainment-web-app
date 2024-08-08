@@ -11,7 +11,7 @@ import Search from '@/component/form/search/Search';
 import CardsWrapper from '@/component/cards/CardsWrapper';
 
 const Movies = () => {
-  const { media, loading, error } = useFitlerWithId();
+  const { media, user, loading, error } = useFitlerWithId();
 
   const moviesData = getCategories(media, 'Movie');
 
@@ -33,7 +33,8 @@ const Movies = () => {
       <CardsWrapper
         isSearching={isSearching}
         filteredData={filteredData}
-        datas={moviesData}
+        media={moviesData}
+        user={user}
         title={'Movies'}
       />
     </section>

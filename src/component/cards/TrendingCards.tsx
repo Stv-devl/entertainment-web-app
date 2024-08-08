@@ -1,35 +1,34 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { TrendingProps } from '@/types/types';
+import { MediaProps } from '@/types/types';
 import TrendingBtn from '../buttons/TrendingBtn';
 import LegendWrapper from './cardElements/CardLegend';
 import Play from './cardElements/CardPlay';
 import CardBookmarked from './cardElements/CardBookmarked';
 import useIsBookmarked from '@/hook/dataSync/useBookmarked';
-import useFitlerWithId from '@/hook/dataSync/useFitlerWithId';
 
-const TrendingCards: React.FC<TrendingProps> = ({ trendings, user }) => {
+const TrendingCards: React.FC<MediaProps> = ({ media, user }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   const { bookmarkedItems, toggleBookmark } = useIsBookmarked(user);
 
   const handlePrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + trendings.length) % trendings.length);
-  }, [trendings.length]);
+    setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
+  }, [media.length]);
 
   const handleNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % trendings.length);
-  }, [trendings.length]);
+    setCurrentIndex((prev) => (prev + 1) % media.length);
+  }, [media.length]);
 
   const trendingSlice = useMemo(() => {
-    const end = (currentIndex + 3) % trendings.length;
+    const end = (currentIndex + 3) % media.length;
     return end > currentIndex
-      ? trendings.slice(currentIndex, end)
-      : [...trendings.slice(currentIndex), ...trendings.slice(0, end)];
-  }, [currentIndex, trendings]);
+      ? media.slice(currentIndex, end)
+      : [...media.slice(currentIndex), ...media.slice(0, end)];
+  }, [currentIndex, media]);
 
   return (
-    trendings.length > 0 && (
+    media.length > 0 && (
       <div className="flex items-center">
         <div className="overflow-hidden">
           <div className="relative flex gap-[16px] sm:gap-[40px]">

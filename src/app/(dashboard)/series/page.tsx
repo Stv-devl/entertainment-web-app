@@ -11,7 +11,7 @@ import useManageFilter from '@/hook/dataSync/useFilterMedias';
 import CardsWrapper from '@/component/cards/CardsWrapper';
 
 const Series = () => {
-  const { media, loading, error } = useFitlerWithId();
+  const { media, user, loading, error } = useFitlerWithId();
 
   const seriesData = getCategories(media, 'TV Series');
 
@@ -33,7 +33,8 @@ const Series = () => {
       <CardsWrapper
         isSearching={isSearching}
         filteredData={filteredData}
-        datas={seriesData}
+        media={seriesData}
+        user={user}
         title={'Tv series'}
       />
     </section>

@@ -61,27 +61,23 @@ export interface SearchProps {
 
 export interface MediaProps {
   media: Media[];
-}
-
-export interface DataProps {
-  data: Media[];
+  user: Users[] | null;
 }
 
 export interface UseFilterWithIdReturn {
   media: Media[];
-  user: Users | null;
+  user: Users[] | null;
   bookmarked: Media[];
   loading: boolean;
   error: any;
 }
 
-export interface TrendingProps {
-  trendings: Media[];
+export interface CardBookmarkedProps {
+  isBookmarked: boolean;
+  title: string;
+  onToggleBookmark: (title: string) => void;
 }
 
-export interface BookmarkedProps {
-  bookmarked: Media[];
-}
 export interface IsBookmarked {
   isBookmarked: boolean;
 }
@@ -89,7 +85,8 @@ export interface IsBookmarked {
 export interface CardsWrapperProps {
   isSearching: boolean;
   filteredData: Media[];
-  datas: Media[];
+  media: Media[];
+  user: Users[] | null;
   title: string;
 }
 

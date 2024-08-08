@@ -7,7 +7,7 @@ const Trending: React.FC<MediaProps> = ({ media, user }) => {
     <div className="trending-container">
       <h1 className="text-xl sm:text-3xl mb-[16px] sm:mb-[25px]">Trending</h1>
       <TrendingCards
-        trendings={media && media.filter((item) => item.isTrending === true)}
+        media={media && media.filter((item) => item.isTrending === true)}
         user={user}
       />
     </div>
