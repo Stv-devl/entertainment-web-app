@@ -31,7 +31,8 @@
     ".next/types/**/*.ts",
     "src/component/withAuth/WithAuth.jsx",
     "postcss.config.js",
-    "tailwind.config.ts"
+    "tailwind.config.ts",
+    "next.config.mjs"
   ],
   "exclude": ["node_modules"]
 }

@@ -5,6 +5,7 @@ const apiSignup = async ({
   email,
   password,
   username,
+  bookmarkedItems,
 }: Users): Promise<Users> => {
   try {
     const response = await fetch('http://localhost:3000/api/user', {
@@ -12,7 +13,7 @@ const apiSignup = async ({
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ id, email, password, username }),
+      body: JSON.stringify({ id, email, password, username, bookmarkedItems }),
     });
 
     if (response.ok) {

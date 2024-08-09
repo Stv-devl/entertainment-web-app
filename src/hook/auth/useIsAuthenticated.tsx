@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import apiVerify from '../../features/apiVerify';
+import apiVerify from '../../Services/apiVerify';
 
 const useIsAuthenticated = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);

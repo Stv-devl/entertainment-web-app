@@ -1,5 +1,5 @@
 import { FormEvent, useCallback, useState } from 'react';
-import apiSignup from '../../features/apiSignup';
+import apiSignup from '../../Services/apiSignup';
 import { v4 as uuidv4 } from 'uuid';
 import { FormDataSignUp } from '@/types/types';
 import useValidation from '../validation/useValidation';
@@ -11,7 +11,11 @@ const useSignUp = () => {
     email: '',
     password: '',
     repeat: '',
+    bookmarkedItems: [],
   });
+
+  console.log(formData);
+
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const { signupErrors, isValidate } = useValidation(formData, isSubmitted);

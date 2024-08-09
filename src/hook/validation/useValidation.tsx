@@ -14,6 +14,7 @@ const useValidation = (formData: FormDataSignUp, isSubmitted: boolean) => {
     email: '',
     password: '',
     repeat: '',
+    bookmarkedItems: '',
   });
 
   const newErrors = useMemo((): ValidationErrors => {

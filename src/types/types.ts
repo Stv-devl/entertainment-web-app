@@ -42,6 +42,7 @@ export interface FormDataSignUp {
   email: string;
   password: string;
   repeat: string;
+  bookmarkedItems: [];
 }
 
 export interface InputProps {
@@ -51,6 +52,7 @@ export interface InputProps {
   value: string;
   placeholder?: string;
   error?: string;
+  autoComplete: string;
 }
 
 export interface SearchProps {

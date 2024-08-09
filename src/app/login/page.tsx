@@ -40,6 +40,7 @@ const Login = () => {
               handleChange={handleChange}
               value={formData.email}
               error={loginErrors ? `loginerror` : ''}
+              autoComplete={'email'}
             />
           </div>
           <div className="input-wrapper">
@@ -50,6 +51,7 @@ const Login = () => {
               handleChange={handleChange}
               value={formData.password}
               error={loginErrors ? `loginerror` : ''}
+              autoComplete={'current-password'}
             />
           </div>
           <span className="form-error text-[#FC4747] ">

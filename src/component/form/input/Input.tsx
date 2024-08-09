@@ -16,6 +16,7 @@ const Input: React.FC<InputProps> = ({
   value,
   placeholder,
   error,
+  autoComplete,
 }: InputProps) => {
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     handleChange({ [name]: e.target.value });
@@ -45,6 +46,7 @@ const Input: React.FC<InputProps> = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        autoComplete={autoComplete}
       />
       {error && error !== 'loginerror' && (
         <span className="text-[#FC4747]">{error}</span>

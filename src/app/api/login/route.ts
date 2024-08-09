@@ -2,9 +2,7 @@ import { NextResponse } from 'next/server';
 import { SignJWT } from 'jose';
 import user from '../../../../data/user.json';
 
-const secretKey = new TextEncoder().encode(
-  '4a7d1ed414474e4033ac29ccb8653d9b967f70b792c90d43c61b7c9744e4397e'
-);
+const secretKey = new TextEncoder().encode(process.env.SECRET_KEY);
 
 export async function POST(request: Request) {
   const { email, password } = await request.json();

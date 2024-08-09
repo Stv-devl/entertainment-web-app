@@ -40,6 +40,7 @@ const SignUp = (): JSX.Element => {
               handleChange={handleChange}
               value={formData.username}
               error={signupErrors.username}
+              autoComplete={'username'}
             />
           </div>
           <div className="input-wrapper">
@@ -50,6 +51,7 @@ const SignUp = (): JSX.Element => {
               handleChange={handleChange}
               value={formData.email}
               error={signupErrors.email}
+              autoComplete={'email'}
             />
           </div>
           <div className="input-wrapper">
@@ -60,6 +62,7 @@ const SignUp = (): JSX.Element => {
               handleChange={handleChange}
               value={formData.password}
               error={signupErrors.password}
+              autoComplete={'new-password'}
             />
           </div>
           <div className="input-wrapper">
@@ -70,6 +73,7 @@ const SignUp = (): JSX.Element => {
               handleChange={handleChange}
               value={formData.repeat}
               error={signupErrors.repeat}
+              autoComplete={'new-password'}
             />
           </div>
 

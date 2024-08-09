@@ -20,5 +20,15 @@
       "1998",
       "Beyond Earth"
     ]
+  },
+  {
+    "id": "b982f295-996b-46df-8e6e-a8e92528fffa",
+    "email": "steven@outs.fr",
+    "password": "0000",
+    "username": "steven",
+    "bookmarkedItems": [
+      "Beyond Earth",
+      "Bottom Gear"
+    ]
   }
 ]

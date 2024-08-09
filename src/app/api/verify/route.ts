@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { jwtVerify } from 'jose';
 
-const secretKey = new TextEncoder().encode(
-  '4a7d1ed414474e4033ac29ccb8653d9b967f70b792c90d43c61b7c9744e4397e'
-);
+const secretKey = new TextEncoder().encode(process.env.SECRET_KEY);
 
 export async function GET(request: NextRequest) {
   const token = request.cookies.get('token')?.value;
