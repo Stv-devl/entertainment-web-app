@@ -4,7 +4,6 @@ import Cookies from 'js-cookie';
 interface AuthState {
   token: string | null;
   userId: string | null;
-  setUserId: (userId: string) => void;
   login: (token: string, userId: string) => void;
   logout: () => void;
 }
@@ -12,13 +11,11 @@ interface AuthState {
 const useAuthStore = create<AuthState>((set) => ({
   token: Cookies.get('token') || null,
   userId: Cookies.get('userId') || null,
-  setUserId: (userId) => {
-    Cookies.set('userId', userId, { expires: 1 });
-    set({ userId });
-  },
+
   login: (token, userId) => {
-    Cookies.set('token', token, { expires: 1 });
-    Cookies.set('userId', userId, { expires: 1 });
+    const oneHour = 1 / 24;
+    Cookies.set('token', token, { expires: oneHour });
+    Cookies.set('userId', userId, { expires: oneHour });
     set({ token, userId });
   },
   logout: () => {

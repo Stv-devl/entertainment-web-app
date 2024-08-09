@@ -1,7 +1,6 @@
 import { FormEvent, useCallback, useState } from 'react';
 import apiSignup from '../../features/apiSignup';
 import { v4 as uuidv4 } from 'uuid';
-import useUserStore from '@/stores/useUserStore';
 import { FormDataSignUp } from '@/types/types';
 import useValidation from '../validation/useValidation';
 import { useRouter } from 'next/navigation';
@@ -16,7 +15,6 @@ const useSignUp = () => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const { signupErrors, isValidate } = useValidation(formData, isSubmitted);
-  const addUser = useUserStore((state) => state.addUser);
   const router = useRouter();
 
   const handleChange = useCallback((updates: {}) => {
@@ -38,10 +36,6 @@ const useSignUp = () => {
       const newUser = await apiSignup({
         id: uuidv4(),
         ...formData,
-      });
-      addUser({
-        ...newUser,
-        bookmarkedItems: newUser.bookmarkedItems || [],
       });
       router.push('/login');
       console.log('signup working', newUser);

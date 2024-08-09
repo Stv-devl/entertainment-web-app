@@ -18,7 +18,6 @@ const useLogin = () => {
   const [loginErrors, setLoginErrors] = useState<boolean>(false);
 
   const login = useAuthStore((state) => state.login);
-  const setUserId = useAuthStore((state) => state.setUserId);
   const router = useRouter();
 
   /**
@@ -44,8 +43,7 @@ const useLogin = () => {
         formData.email,
         formData.password
       );
-      login(token);
-      setUserId(userId);
+      login(token, userId);
       router.push('/home');
     } catch (error) {
       console.error('Login failed:', error);
