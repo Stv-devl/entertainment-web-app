@@ -8,7 +8,7 @@ const useBookmarked = () => {
 
   useEffect(() => {
     if (user) {
-      setBookmarkedItems(user.bookmarkedItems);
+      setBookmarkedItems(user.bookmarkedItems ?? []);
     }
   }, [user]);
 
