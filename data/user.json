@@ -30,5 +30,12 @@
       "Beyond Earth",
       "Bottom Gear"
     ]
+  },
+  {
+    "id": "b3a515e7-4c42-47b7-98c9-6c7c41af7dc8",
+    "email": "david@test.com",
+    "password": "0000",
+    "username": "David",
+    "bookmarkedItems": []
   }
 ]

@@ -1,6 +1,5 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState } from 'react';
 import { FormDataSignUp, ValidationErrors } from '@/types/types';
-
 import {
   validateEmail,
   validatePassword,
@@ -8,17 +7,16 @@ import {
   validateUsername,
 } from '@/utils/validation';
 
-const useValidation = (formData: FormDataSignUp, isSubmitted: boolean) => {
+const useValidation = (formData: FormDataSignUp) => {
   const [signupErrors, setSignupErrors] = useState<ValidationErrors>({
     username: '',
     email: '',
     password: '',
     repeat: '',
-    bookmarkedItems: '',
   });
 
-  const newErrors = useMemo((): ValidationErrors => {
-    return {
+  const validateForm = (): boolean => {
+    const newErrors: ValidationErrors = {
       username:
         formData.username.trim() === ''
           ? 'Username is required.'
@@ -42,20 +40,15 @@ const useValidation = (formData: FormDataSignUp, isSubmitted: boolean) => {
           ? 'Password is required.'
           : validateRepeatPassword(formData.password, formData.repeat)
           ? ''
-          : 'Password should be the same .',
+          : 'Passwords should match.',
     };
-  }, [formData]);
 
-  useEffect(() => {
-    if (isSubmitted) {
-      setSignupErrors(newErrors);
-    }
-  }, [isSubmitted, newErrors]);
+    setSignupErrors(newErrors);
 
-  const isValidate =
-    isSubmitted && !Object.values(newErrors).some((error) => error);
+    return !Object.values(newErrors).some((error) => error !== '');
+  };
 
-  return { signupErrors, isValidate };
+  return { signupErrors, validateForm };
 };
 
 export default useValidation;

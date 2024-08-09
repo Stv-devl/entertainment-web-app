@@ -14,11 +14,7 @@ const useSignUp = () => {
     bookmarkedItems: [],
   });
 
-  console.log(formData);
-
-  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-
-  const { signupErrors, isValidate } = useValidation(formData, isSubmitted);
+  const { signupErrors, validateForm } = useValidation(formData);
   const router = useRouter();
 
   const handleChange = useCallback((updates: {}) => {
@@ -30,12 +26,14 @@ const useSignUp = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
 
-    if (!isValidate) {
+    const isValid = validateForm();
+
+    if (!isValid) {
       console.error('Form data is invalid');
       return;
     }
+
     try {
       const newUser = await apiSignup({
         id: uuidv4(),
@@ -53,8 +51,6 @@ const useSignUp = () => {
     handleChange,
     formData,
     signupErrors,
-    isSubmitted,
   };
 };
-
 export default useSignUp;
