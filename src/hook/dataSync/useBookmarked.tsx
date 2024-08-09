@@ -1,25 +1,22 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Users } from '@/types/types';
 import useMediaStore from '@/stores/useMediaStore';
 
-const useBookmarked = (user: Users) => {
-  const userId = user && user.id;
-  const { users, toggleBookmark } = useMediaStore();
+const useBookmarked = () => {
+  const { user, toggleBookmark } = useMediaStore();
+
   const [bookmarkedItems, setBookmarkedItems] = useState<string[]>([]);
 
   useEffect(() => {
-    const currentUser = users.find((u) => u.id === userId);
-    if (currentUser && currentUser.bookmarkedItems) {
-      setBookmarkedItems(currentUser.bookmarkedItems);
+    if (user) {
+      setBookmarkedItems(user.bookmarkedItems);
     }
-  }, [users, userId]);
+  }, [user]);
 
   const handleToggleBookmark = useCallback(
     async (movieTitle: string) => {
-      if (!userId) return;
-      await toggleBookmark(userId, movieTitle);
+      await toggleBookmark(movieTitle);
     },
-    [toggleBookmark, userId]
+    [toggleBookmark]
   );
 
   return { bookmarkedItems, handleToggleBookmark };

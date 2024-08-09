@@ -5,10 +5,10 @@ import Play from './cardElements/CardPlay';
 import CardBookmarked from './cardElements/CardBookmarked';
 import useIsBookmarked from '@/hook/dataSync/useBookmarked';
 
-const Cards: React.FC<MediaProps> = ({ media, user }) => {
+const Cards: React.FC<MediaProps> = ({ media }) => {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
-  const { bookmarkedItems, handleToggleBookmark } = useIsBookmarked(user);
+  const { bookmarkedItems, handleToggleBookmark } = useIsBookmarked();
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-x-[5%] sm:gap-x-[4%] gap-y-[16px] sm:gap-y-[32px] max-w-[1490px] ">
@@ -42,7 +42,7 @@ const Cards: React.FC<MediaProps> = ({ media, user }) => {
                 title={data.title}
                 onToggleBookmark={handleToggleBookmark}
               />
-              <LegendWrapper data={data} />
+              <LegendWrapper media={data} />
             </div>
           );
         })}

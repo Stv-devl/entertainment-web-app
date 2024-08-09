@@ -1,8 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import withAuth from '../../../component/withAuth/WithAuth';
-import useFitlerWithId from '@/hook/dataSync/useFitlerWithId';
 import Trending from '@/component/trending/Trending';
 import Recommended from '../../../component/recommended/Recommended';
 import Loading from '@/component/loading/Loading';
@@ -10,16 +9,26 @@ import Error from '@/component/error/Error';
 import Search from '../../../component/form/search/Search';
 import useManageFilter from '@/hook/dataSync/useFilterMedias';
 import Cards from '@/component/cards/Cards';
-import { UseFilterWithIdReturn } from '@/types/types';
+import useMediaStore from '@/stores/useMediaStore';
 
-const Home = () => {
-  const { media, user, loading, error }: UseFilterWithIdReturn =
-    useFitlerWithId();
+/**
+ * The Home page component displays trending and recommended media items with a search functionality.
+ * If the data is still loading, it shows a loading indicator.
+ * If there is an error, it shows an error message.
+ * Otherwise, it displays the trending and recommended items, or a filtered list of items based on the search query.
+ * @returns {JSX.Element} The Home page component.
+ */
 
+const Home: React.FC = (): JSX.Element => {
+  const { media, user, loading, error, fetchData } = useMediaStore();
   const { searchBar, filteredData, handleChange, isSearching } =
     useManageFilter({
       media,
     });
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   if (loading) return <Loading />;
   if (error) return <Error />;
@@ -33,11 +42,11 @@ const Home = () => {
       />
       <>
         {isSearching ? (
-          <Cards media={filteredData} user={user} />
+          <Cards media={filteredData} />
         ) : (
           <div className="page-container">
-            <Trending media={media} user={user} />
-            <Recommended media={media} user={user} />
+            <Trending media={media} />
+            <Recommended media={media} />
           </div>
         )}
       </>

@@ -1,17 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import withAuth from '../../../component/withAuth/WithAuth';
-import useFitlerWithId from '@/hook/dataSync/useFitlerWithId';
 import Loading from '@/component/loading/Loading';
 import Error from '@/component/error/Error';
 import { getCategories } from '@/utils/filterByCategory';
 import useManageFilter from '@/hook/dataSync/useFilterMedias';
 import Search from '@/component/form/search/Search';
 import CardsWrapper from '@/component/cards/CardsWrapper';
+import useMediaStore from '@/stores/useMediaStore';
 
 const Movies = () => {
-  const { media, user, loading, error } = useFitlerWithId();
+  const { media, user, loading, error, fetchData } = useMediaStore();
 
   const moviesData = getCategories(media, 'Movie');
 
@@ -19,6 +19,10 @@ const Movies = () => {
     useManageFilter({
       moviesData,
     });
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   if (loading) return <Loading />;
   if (error) return <Error />;
@@ -34,7 +38,6 @@ const Movies = () => {
         isSearching={isSearching}
         filteredData={filteredData}
         media={moviesData}
-        user={user}
         title={'Movies'}
       />
     </section>

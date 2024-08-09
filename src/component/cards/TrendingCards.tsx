@@ -6,11 +6,11 @@ import Play from './cardElements/CardPlay';
 import CardBookmarked from './cardElements/CardBookmarked';
 import useIsBookmarked from '@/hook/dataSync/useBookmarked';
 
-const TrendingCards: React.FC<MediaProps> = ({ media, user }) => {
+const TrendingCards: React.FC<MediaProps> = ({ media }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
-  const { bookmarkedItems, handleToggleBookmark } = useIsBookmarked(user);
+  const { bookmarkedItems, handleToggleBookmark } = useIsBookmarked();
 
   const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
@@ -62,7 +62,7 @@ const TrendingCards: React.FC<MediaProps> = ({ media, user }) => {
                   onToggleBookmark={handleToggleBookmark}
                 />
                 <div className="absolute bottom-6 left-4">
-                  <LegendWrapper data={item} />
+                  <LegendWrapper media={item} />
                 </div>
               </div>
             ))}

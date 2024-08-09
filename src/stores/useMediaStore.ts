@@ -2,27 +2,37 @@ import { create } from 'zustand';
 import { Media, Users } from '../types/types';
 import apiService from '../features/apiDatas';
 import updateBookmark from '@/features/apiBookmark';
+import useAuthStore from './useAuthStore';
 
 interface MediaDataState {
-  users: Users[];
+  user: Users | null;
   media: Media[];
+  bookmarked: Media[];
   loading: boolean;
   error: string | null;
-
   fetchData: () => Promise<void>;
-  toggleBookmark: (userId: string, movieTitle: string) => Promise<void>;
+  toggleBookmark: (movieTitle: string) => Promise<void>;
+  setUser: (user: Users) => void;
 }
 
-const useMediaStore = create<MediaDataState>((set) => ({
-  users: [],
+const useMediaStore = create<MediaDataState>((set, get) => ({
+  user: null,
   media: [],
+  bookmarked: [],
   loading: false,
   error: null,
+  setUser: (user: Users) => set({ user }),
+
   fetchData: async () => {
+    const { userId } = useAuthStore.getState();
     set({ loading: true, error: null });
     try {
       const { media, users } = await apiService();
-      set({ media, users, loading: false });
+      const user = users.find((u) => u.id === userId) || null;
+      const bookmarked = user
+        ? media.filter((item) => user.bookmarkedItems!.includes(item.title))
+        : [];
+      set({ media, user, bookmarked, loading: false });
     } catch (error: unknown) {
       if (error instanceof Error) {
         set({ error: error.message, loading: false });
@@ -32,15 +42,20 @@ const useMediaStore = create<MediaDataState>((set) => ({
     }
   },
 
-  toggleBookmark: async (userId: string, movieTitle: string) => {
+  toggleBookmark: async (movieTitle: string) => {
+    const { user, media } = get();
+    if (!user) return;
+
     try {
-      const updatedUser = await updateBookmark(userId, movieTitle);
+      const updatedUser = await updateBookmark(user.id, movieTitle);
       if (updatedUser) {
-        set((state) => ({
-          users: state.users.map((user) =>
-            user.id === userId ? updatedUser : user
-          ),
-        }));
+        const bookmarked = media.filter((item) =>
+          updatedUser.bookmarkedItems.includes(item.title)
+        );
+        set({
+          user: updatedUser,
+          bookmarked,
+        });
       }
     } catch (error) {
       console.error('Error toggling bookmark:', error);
