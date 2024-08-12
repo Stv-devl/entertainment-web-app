@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { Media, Users } from '../types/types';
-import apiService from '../services/apiDatas';
+import apiService from '@/services/apiDatas';
 import updateBookmark from '@/services/apiBookmark';
 import useAuthStore from './useAuthStore';
 
