@@ -138,3 +138,7 @@ export type linkWrapperProp = {
 export interface IconBookmarkedProps {
   isSelected?: boolean;
 }
+export interface UpdateBookmarkResponse {
+  success: boolean;
+  message?: string;
+}
