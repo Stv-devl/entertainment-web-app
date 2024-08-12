@@ -5,9 +5,17 @@ import Play from './cardElements/CardPlay';
 import CardBookmarked from './cardElements/CardBookmarked';
 import useIsBookmarked from '@/hook/dataSync/useBookmarked';
 
-const Cards: React.FC<MediaProps> = ({ media }) => {
-  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+/**
+ * The Cards component renders a grid of media cards, each displaying a media item with its thumbnail, title, category, and bookmark status.
+ * When a card is hovered, a play button overlay appears, allowing the user to interact with the media.
+ * The component also manages the bookmark status of each media item, allowing users to add or remove items from their bookmarks.
+ * @param {MediaProps} props - The props for the Cards component.
+ * @param {Media[]} props.media - An array of media objects containing information such as title, category, thumbnail, etc.
+ * @returns {JSX.Element} The Cards component rendering a grid of media items.
+ */
 
+const Cards: React.FC<MediaProps> = ({ media }: MediaProps): JSX.Element => {
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const { bookmarkedItems, handleToggleBookmark } = useIsBookmarked();
 
   return (

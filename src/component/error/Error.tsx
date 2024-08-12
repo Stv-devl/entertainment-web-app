@@ -1,8 +1,10 @@
 /**
- * The component is display the error message
- * @returns - An error message
+ * The Error component displays a 404 error message indicating that the requested page does not exist.
+ *
+ * @component
+ * @returns {JSX.Element} A JSX element containing the error message.
  */
-const Error = () => {
+const Error = (): JSX.Element => {
   return (
     <div className="flex items-center justify-center flex-col">
       <h1 className="mx-[60px] text-5xl">404</h1>

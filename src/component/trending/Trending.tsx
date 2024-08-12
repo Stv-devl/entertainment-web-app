@@ -2,6 +2,13 @@ import React from 'react';
 import TrendingCards from '../cards/TrendingCards';
 import { MediaProps } from '@/types/types';
 
+/**
+ * Displays a list of trending media items.
+ * Filters the provided media array to include only items marked as trending.
+ * @param {Media[]} media - An array of media objects to be filtered and displayed as trending items.
+ * @returns {JSX.Element} A section with filtered trending media items.
+ */
+
 const Trending: React.FC<MediaProps> = ({ media }) => {
   return (
     <div className="trending-container">

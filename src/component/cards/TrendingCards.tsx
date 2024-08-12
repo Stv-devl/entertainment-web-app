@@ -6,6 +6,15 @@ import Play from './cardElements/CardPlay';
 import CardBookmarked from './cardElements/CardBookmarked';
 import useIsBookmarked from '@/hook/dataSync/useBookmarked';
 
+/**
+ * The TrendingCards component displays a carousel of trending media items.
+ * Users can navigate through the items using previous and next buttons, and can interact with each item to play it or toggle its bookmark status.
+ * The component supports hover effects to show the play button overlay.
+ * @param {MediaProps} props - The props for the TrendingCards component.
+ * @param {Media[]} props.media - An array of media objects containing information such as title, category, thumbnail, etc.
+ * @returns {JSX.Element | null} The TrendingCards component rendering a carousel of trending media items.
+ */
+
 const TrendingCards: React.FC<MediaProps> = ({ media }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);

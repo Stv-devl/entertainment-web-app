@@ -4,6 +4,13 @@ import user from '../../../../data/user.json';
 
 const secretKey = new TextEncoder().encode(process.env.SECRET_KEY);
 
+/**
+ * Handles POST requests for user authentication.
+ * Validates the provided email and password against stored user data, generates a JWT if valid, and sets it in a cookie.
+ * @param {Request} request - The incoming HTTP request object containing the user's email and password.
+ * @returns {Promise<NextResponse>} A response containing the authentication status, and in case of success, a JWT and user ID.
+ */
+
 export async function POST(request: Request) {
   const { email, password } = await request.json();
 

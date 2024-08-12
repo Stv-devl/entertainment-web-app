@@ -7,13 +7,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 /**
- * Login component
- * Display a form for user authentication. It allows the user to write their username and password, and checkbox for remember they are login.
- * On successful login, the user is redirected to the dashboard.
- * @returns - The Login component with a sign-in form.
+ * The Login component renders a login form where users can enter their email and password to access their account.
+ * The form includes validation for both fields and displays an error message if the login credentials are incorrect.
+ * Upon form submission, the user data is processed by the `useLogin` hook, which handles authentication.
+ * If the user does not have an account, they are provided with a link to navigate to the sign-up page.
+ * @returns {JSX.Element} The Login form component.
  */
 
-const Login = () => {
+const Login = (): JSX.Element => {
   const { handleSubmit, handleChange, formData, loginErrors } = useLogin();
 
   return (

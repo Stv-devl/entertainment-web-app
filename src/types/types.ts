@@ -1,3 +1,5 @@
+import { FormEvent } from 'react';
+
 export interface Thumbnail {
   small: string;
   medium?: string;
@@ -37,12 +39,26 @@ export interface FormDataLogin {
   password: string;
 }
 
+export interface UseLoginReturn {
+  handleSubmit: (e: FormEvent) => void;
+  handleChange: (updates: Partial<FormDataLogin>) => void;
+  formData: FormDataLogin;
+  loginErrors: boolean;
+}
+
 export interface FormDataSignUp {
   username: string;
   email: string;
   password: string;
   repeat: string;
   bookmarkedItems: [];
+}
+
+export interface UseSignUpReturn {
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>;
+  handleChange: (updates: Partial<FormDataSignUp>) => void;
+  formData: FormDataSignUp;
+  signupErrors: ValidationErrors;
 }
 
 export interface InputProps {

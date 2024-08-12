@@ -1,6 +1,12 @@
 import React from 'react';
 
-const IconBookmarked = ({ isSelected = false }) => {
+/**
+ * Renders a bookmark icon with dynamic color based on selection state.
+ * The icon changes color when selected and includes a hover effect when not selected.
+ * @returns {JSX.Element} The bookmark icon component.
+ */
+
+const IconBookmarked = ({ isSelected = false }): JSX.Element => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -3,10 +3,10 @@ import { InputProps } from '@/types/types';
 import { ChangeEvent } from 'react';
 
 /**
- * Input component
- * Renders an input with a label and an optional error message.
- * @param props - The props object for the Input component.
- * @returns The input component.
+ * Renders an input field with dynamic border styling and optional error message.
+ * Displays an error message below the input when validation fails.
+ * @param props - Properties for the Input component.
+ * @returns The rendered input component with optional error message.
  */
 
 const Input: React.FC<InputProps> = ({

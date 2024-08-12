@@ -1,6 +1,12 @@
 import React from 'react';
 
-const IconSerie = ({ isSelected = false }) => {
+/**
+ * Renders a movie icon with dynamic color based on selection state.
+ * The icon changes color when selected and includes a hover effect when not selected.
+ * @returns {JSX.Element} The movie icon component.
+ */
+
+const IconSerie = ({ isSelected = false }): JSX.Element => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

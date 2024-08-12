@@ -6,10 +6,18 @@ import { usePathname } from 'next/navigation';
 import useAuthStore from '../../stores/useAuthStore';
 import useIsAuthenticated from '../../hook/auth/useIsAuthenticated';
 import { useLogout } from '@/hook/auth/useLogout';
-
 import LinkWrapper from './LinkWrapper';
 
-const Banner = () => {
+/**
+ * The Banner component displays a navigation bar with a logo, navigation links, and a user avatar.
+ * If the user is authenticated, the component allows the user to log out via a logout button.
+ * The component adjusts its layout based on the screen size, providing a vertical layout for larger screens.
+
+ * The authentication status is determined by checking the presence of a token or the `isAuthenticated` state.
+ * @returns {JSX.Element | null} The Banner component, or null if the user is not authenticated.
+ */
+
+const Banner = (): JSX.Element | null => {
   const { token } = useAuthStore((state) => ({
     token: state.token,
   }));

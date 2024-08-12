@@ -10,8 +10,17 @@ import Search from '@/component/form/search/Search';
 import CardsWrapper from '@/component/cards/CardsWrapper';
 import useMediaStore from '@/stores/useMediaStore';
 
-const Movies = () => {
-  const { media, user, loading, error, fetchData } = useMediaStore();
+/**
+ * The Movies page component displays a list of movies with a search functionality.
+ * The movies are filtered by category ('Movie') from the overall media data.
+ * If the data is still loading, it shows a loading indicator.
+ * If there is an error, it shows an error message.
+ * Otherwise, it displays the filtered list of movies based on the search query or the full list of movies.
+ * This component is wrapped with an authentication check using `withAuth`.
+ * @returns {JSX.Element} The Movies page component.
+ */
+const Movies = (): JSX.Element => {
+  const { media, loading, error, fetchData } = useMediaStore();
 
   const moviesData = getCategories(media, 'Movie');
 

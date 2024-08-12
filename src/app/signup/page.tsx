@@ -7,10 +7,11 @@ import useSignUp from '../../hook/auth/useSignUp';
 import Input from '../../component/form/input/Input';
 
 /**
- * Login component
- * Display a form for user authentication. It allows the user to write their username and password, and checkbox for remember they are login.
- * On successful login, the user is redirected to the dashboard.
- * @returns {JSX.Element} - The Login component with a sign-in form.
+ * The SignUp component renders a sign-up form where users can create a new account.
+ * The form includes fields for username, email, password, and repeat password, and it handles validation errors.
+ * Upon form submission, the user data is processed by the `useSignUp` hook.
+ * If the user already has an account, they are given the option to navigate to the login page.
+ * @returns {JSX.Element} The SignUp form component.
  */
 
 const SignUp = (): JSX.Element => {

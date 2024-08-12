@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import useFitlerWithId from '@/hook/dataSync/useFitlerWithId';
 import withAuth from '../../../component/withAuth/WithAuth';
 import Loading from '@/component/loading/Loading';
 import Error from '@/component/error/Error';
@@ -11,8 +10,18 @@ import useManageFilter from '@/hook/dataSync/useFilterMedias';
 import CardsWrapper from '@/component/cards/CardsWrapper';
 import useMediaStore from '@/stores/useMediaStore';
 
-const Series = () => {
-  const { media, user, loading, error, fetchData } = useMediaStore();
+/**
+ * The Series page component displays a list of TV series with a search functionality.
+ * The series are filtered by category ('TV Series') from the overall media data.
+ * If the data is still loading, it shows a loading indicator.
+ * If there is an error, it shows an error message.
+ * Otherwise, it displays the filtered list of TV series based on the search query or the full list of TV series.
+ * This component is wrapped with an authentication check using `withAuth`.
+ * @returns {JSX.Element} The Series page component.
+ */
+
+const Series = (): JSX.Element => {
+  const { media, loading, error, fetchData } = useMediaStore();
 
   const seriesData = getCategories(media, 'TV Series');
 

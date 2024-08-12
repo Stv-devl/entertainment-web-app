@@ -15,12 +15,13 @@ import useMediaStore from '@/stores/useMediaStore';
  * The Home page component displays trending and recommended media items with a search functionality.
  * If the data is still loading, it shows a loading indicator.
  * If there is an error, it shows an error message.
- * Otherwise, it displays the trending and recommended items, or a filtered list of items based on the search query.
+ * Otherwise, it displays either a filtered list of items based on the search query, or the trending and recommended items.
+ * This component is wrapped with an authentication check using `withAuth`.
  * @returns {JSX.Element} The Home page component.
  */
 
-const Home: React.FC = (): JSX.Element => {
-  const { media, user, loading, error, fetchData } = useMediaStore();
+const Home = (): JSX.Element => {
+  const { media, loading, error, fetchData } = useMediaStore();
   const { searchBar, filteredData, handleChange, isSearching } =
     useManageFilter({
       media,

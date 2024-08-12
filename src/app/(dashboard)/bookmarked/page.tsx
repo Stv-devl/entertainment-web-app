@@ -9,8 +9,17 @@ import Loading from '@/component/loading/Loading';
 import Error from '@/component/error/Error';
 import useMediaStore from '@/stores/useMediaStore';
 
-const BookMarked = () => {
-  const { bookmarked, user, loading, error, fetchData } = useMediaStore();
+/**
+ * The BookMarked page component displays the user's bookmarked media items with a search functionality.
+ * If the data is still loading, it shows a loading indicator.
+ * If there is an error, it shows an error message.
+ * Otherwise, it displays the bookmarked items or a filtered list of items based on the search query.
+ * This component is wrapped with an authentication check using `withAuth`.
+ * @returns {JSX.Element} The BookMarked page component.
+ */
+
+const BookMarked = (): JSX.Element => {
+  const { bookmarked, loading, error, fetchData } = useMediaStore();
 
   const { searchBar, filteredData, handleChange, isSearching } =
     useManageFilter({

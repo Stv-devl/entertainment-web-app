@@ -7,6 +7,14 @@ import {
   validateUsername,
 } from '@/utils/validation';
 
+/**
+ * Custom hook for validating sign-up form data.
+ * It validates the username, email, password, and password confirmation fields.
+ * @param {FormDataSignUp} formData - The current state of the sign-up form data.
+ * @returns {object} An object containing:
+ * - `signupErrors`: An object with error messages for each field in the sign-up form.
+ * - `validateForm`: Function to validate the form and update the error messages.
+ */
 const useValidation = (formData: FormDataSignUp) => {
   const [signupErrors, setSignupErrors] = useState<ValidationErrors>({
     username: '',
@@ -15,6 +23,11 @@ const useValidation = (formData: FormDataSignUp) => {
     repeat: '',
   });
 
+  /**
+   * Validates the sign-up form data.
+   * Updates the error messages for each form field and returns a boolean indicating whether the form is valid.
+   * @returns {boolean} True if the form is valid, false otherwise.
+   */
   const validateForm = (): boolean => {
     const newErrors: ValidationErrors = {
       username:

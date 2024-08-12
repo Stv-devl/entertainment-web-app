@@ -2,15 +2,19 @@ import { FormEvent, useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useAuthStore from '../../stores/useAuthStore';
 import apiLogin from '../../Services/apiLogin';
-import { FormDataLogin } from '@/types/types';
+import { FormDataLogin, UseLoginReturn } from '@/types/types';
 
 /**
  * Custom hook for handling login functionality.
  * Manages form state, handles input changes, and submits login data.
- * @returns  An object containing handleSubmit, handleChange, and formData.
+ * @returns {object} An object containing:
+ * - `handleSubmit`: Function to handle form submission for logging in the user.
+ * - `handleChange`: Function to handle changes to the form inputs.
+ * - `formData`: The current state of the login form data.
+ * - `loginErrors`: Boolean indicating if there were errors during login.
  */
 
-const useLogin = () => {
+const useLogin = (): UseLoginReturn => {
   const [formData, setFormData] = useState<FormDataLogin>({
     email: '',
     password: '',

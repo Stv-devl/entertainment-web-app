@@ -28,8 +28,8 @@ const fetchData = async (url: string): Promise<any> => {
 const apiService = async (): Promise<{ media: Media[]; users: Users[] }> => {
   try {
     const [usersData, mediaData] = await Promise.all([
-      fetchData('http://localhost:3000/api/user'),
-      fetchData('http://localhost:3000/api/data'),
+      fetchData(`${process.env.NEXT_PUBLIC_API_URL}/user`),
+      fetchData(`${process.env.NEXT_PUBLIC_API_URL}/data`),
     ]);
 
     return { media: mediaData, users: usersData };

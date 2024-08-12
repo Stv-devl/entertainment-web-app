@@ -1,4 +1,11 @@
-const CardPlay = () => {
+/**
+ * The CardPlay component renders a "Play" button with an icon.
+ * The button is styled with a semi-transparent background, rounded edges, and includes a play icon and the text "Play".
+ * This component is typically used as an overlay on media cards to indicate that the item can be played.
+ * @returns {JSX.Element} The CardPlay component rendering a play button.
+ */
+
+const CardPlay = (): JSX.Element => {
   return (
     <div className="flex items-center justify-center gap-[19px] bg-slate-800 opacity-75 w-[90px] h-[35px] sm:w-[117px] sm:h-[48px] cursor-pointer rounded-full ">
       <svg
