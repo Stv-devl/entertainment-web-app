@@ -1,5 +1,5 @@
 import { FormEvent, useCallback, useState } from 'react';
-import apiSignup from '@/services/apiSignup';
+import apiSignup from '../../services/apiSignup';
 import { v4 as uuidv4 } from 'uuid';
 import { FormDataSignUp, UseSignUpReturn } from '@/types/types';
 import useValidation from '../validation/useValidation';

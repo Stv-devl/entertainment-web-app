@@ -4,7 +4,7 @@ import path from 'path';
 import { Users } from '@/types/types';
 
 const filePath = path.join(process.cwd(), 'data', 'user.json');
-let user: Users[] = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Users[];
+let users: Users[] = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Users[];
 
 /**
  * Handles GET requests to retrieve the list of users.
@@ -12,7 +12,7 @@ let user: Users[] = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Users[];
  * @returns {NextResponse} A response containing the list of users in JSON format.
  */
 export async function GET(request: Request): Promise<NextResponse> {
-  return NextResponse.json(user);
+  return NextResponse.json(users);
 }
 
 /**
@@ -24,8 +24,8 @@ export async function GET(request: Request): Promise<NextResponse> {
 export async function POST(request: Request): Promise<NextResponse> {
   try {
     const newUser: Users = await request.json();
-    user.push(newUser);
-    fs.writeFileSync(filePath, JSON.stringify(user, null, 2), 'utf8');
+    users.push(newUser);
+    fs.writeFileSync(filePath, JSON.stringify(users, null, 2), 'utf8');
     return NextResponse.json(newUser, { status: 201 });
   } catch (error) {
     console.error('Error processing POST request:', error);
@@ -42,13 +42,13 @@ export async function POST(request: Request): Promise<NextResponse> {
 export async function PUT(request: Request): Promise<NextResponse> {
   try {
     const { userId, movieTitle } = await request.json();
-    const userIndex = user.findIndex((u) => u.id === userId);
+    const userIndex = users.findIndex((u) => u.id === userId);
 
     if (userIndex === -1) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
-    const userBookmarks = user[userIndex].bookmarkedItems || [];
+    const userBookmarks = users[userIndex].bookmarkedItems || [];
     const movieIndex = userBookmarks.indexOf(movieTitle);
 
     if (movieIndex === -1) {
@@ -57,10 +57,9 @@ export async function PUT(request: Request): Promise<NextResponse> {
       userBookmarks.splice(movieIndex, 1);
     }
 
-    user[userIndex].bookmarkedItems = userBookmarks;
-    fs.writeFileSync(filePath, JSON.stringify(user, null, 2), 'utf8');
-
-    return NextResponse.json(user[userIndex], { status: 200 });
+    users[userIndex].bookmarkedItems = userBookmarks;
+    fs.writeFileSync(filePath, JSON.stringify(users, null, 2), 'utf8');
+    return NextResponse.json(users[userIndex], { status: 200 });
   } catch (error) {
     console.error('Error processing PUT request:', error);
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
