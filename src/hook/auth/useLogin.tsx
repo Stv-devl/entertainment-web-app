@@ -1,7 +1,7 @@
 import { FormEvent, useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useAuthStore from '../../stores/useAuthStore';
-import apiLogin from '../../Services/apiLogin';
+import apiLogin from '../../services/apiLogin';
 import { FormDataLogin, UseLoginReturn } from '@/types/types';
 
 /**

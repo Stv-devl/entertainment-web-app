@@ -1,14 +1,17 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import user from '../../../../data/user.json';
+import { Users } from '@/types/types';
+
+const filePath = path.join(process.cwd(), 'data', 'user.json');
+let user: Users[] = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Users[];
 
 /**
  * Handles GET requests to retrieve the list of users.
  * @param {Request} request - The incoming HTTP request object.
  * @returns {NextResponse} A response containing the list of users in JSON format.
  */
-export async function GET(request: Request) {
+export async function GET(request: Request): Promise<NextResponse> {
   return NextResponse.json(user);
 }
 
@@ -18,12 +21,16 @@ export async function GET(request: Request) {
  * @param {Request} request - The incoming HTTP request object containing the new user data.
  * @returns {NextResponse} A response confirming the creation of the new user with a status of 201.
  */
-export async function POST(request: Request) {
-  const newUser = await request.json();
-  user.push(newUser);
-  const filePath = path.join(process.cwd(), 'data', 'user.json');
-  fs.writeFileSync(filePath, JSON.stringify(user, null, 2), 'utf8');
-  return NextResponse.json(newUser, { status: 201 });
+export async function POST(request: Request): Promise<NextResponse> {
+  try {
+    const newUser: Users = await request.json();
+    user.push(newUser);
+    fs.writeFileSync(filePath, JSON.stringify(user, null, 2), 'utf8');
+    return NextResponse.json(newUser, { status: 201 });
+  } catch (error) {
+    console.error('Error processing POST request:', error);
+    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+  }
 }
 
 /**
@@ -32,12 +39,16 @@ export async function POST(request: Request) {
  * @param {Request} request - The incoming HTTP request object containing the user ID and movie title.
  * @returns {NextResponse} A response containing the updated user data, or an error if the user is not found.
  */
-export async function PUT(request: Request) {
-  const { userId, movieTitle } = await request.json();
-  const userIndex = user.findIndex((u) => u.id === userId);
+export async function PUT(request: Request): Promise<NextResponse> {
+  try {
+    const { userId, movieTitle } = await request.json();
+    const userIndex = user.findIndex((u) => u.id === userId);
 
-  if (userIndex !== -1) {
-    const userBookmarks = user[userIndex].bookmarkedItems;
+    if (userIndex === -1) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+
+    const userBookmarks = user[userIndex].bookmarkedItems || [];
     const movieIndex = userBookmarks.indexOf(movieTitle);
 
     if (movieIndex === -1) {
@@ -46,11 +57,12 @@ export async function PUT(request: Request) {
       userBookmarks.splice(movieIndex, 1);
     }
 
-    const filePath = path.join(process.cwd(), 'data', 'user.json');
+    user[userIndex].bookmarkedItems = userBookmarks;
     fs.writeFileSync(filePath, JSON.stringify(user, null, 2), 'utf8');
 
     return NextResponse.json(user[userIndex], { status: 200 });
-  } else {
-    return NextResponse.json({ error: 'User not found' }, { status: 404 });
+  } catch (error) {
+    console.error('Error processing PUT request:', error);
+    return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }
 }

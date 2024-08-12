@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { Media, Users } from '../types/types';
-import apiService from '../Services/apiDatas';
-import updateBookmark from '@/Services/apiBookmark';
+import apiService from '../services/apiDatas';
+import updateBookmark from '@/services/apiBookmark';
 import useAuthStore from './useAuthStore';
 
 interface MediaDataState {

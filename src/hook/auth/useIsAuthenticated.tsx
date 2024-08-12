@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import apiVerify from '../../Services/apiVerify';
+import apiVerify from '../../services/apiVerify';
 
 /**
  * Custom hook to check if the user is authenticated.
