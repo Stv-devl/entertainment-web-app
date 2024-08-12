@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * The Error component displays a 404 error message indicating that the requested page does not exist.
  *

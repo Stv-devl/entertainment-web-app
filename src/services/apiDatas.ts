@@ -5,10 +5,10 @@ import { Media, Users } from '../types/types';
  * Fetches data from a given URL and returns the JSON response. Throws an error if the fetch operation fails.
  * @async
  * @param {string} url - The URL to fetch data from.
- * @returns {Promise<any>} - The JSON data fetched from the API.
+ * @returns {Promise<T>} - The JSON data fetched from the API.
  * @throws {Error} - If the response is not ok.
  */
-const fetchData = async (url: string): Promise<any> => {
+const fetchData = async <T>(url: string): Promise<T> => {
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(
@@ -28,8 +28,8 @@ const fetchData = async (url: string): Promise<any> => {
 const apiService = async (): Promise<{ media: Media[]; users: Users[] }> => {
   try {
     const [usersData, mediaData] = await Promise.all([
-      fetchData(`${process.env.NEXT_PUBLIC_API_URL}/user`),
-      fetchData(`${process.env.NEXT_PUBLIC_API_URL}/data`),
+      fetchData<Users[]>(`${process.env.NEXT_PUBLIC_API_URL}/user`),
+      fetchData<Media[]>(`${process.env.NEXT_PUBLIC_API_URL}/data`),
     ]);
 
     return { media: mediaData, users: usersData };

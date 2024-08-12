@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * The CardPlay component renders a "Play" button with an icon.
  * The button is styled with a semi-transparent background, rounded edges, and includes a play icon and the text "Play".

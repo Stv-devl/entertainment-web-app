@@ -1,6 +1,6 @@
-import { MediaProps } from '@/types/types';
 import React from 'react';
 import Cards from '../cards/Cards';
+import { MediaProps } from '@/types/types';
 
 /**
  * Displays a list of recommended media items for the user.

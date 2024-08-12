@@ -28,7 +28,7 @@ const useLogin = (): UseLoginReturn => {
    * Handles changes to the form inputs.
    * @param updates - An object containing the updated form values.
    */
-  const handleChange = useCallback((updates: {}) => {
+  const handleChange = useCallback((updates: Partial<FormDataLogin>) => {
     setLoginErrors(false);
     setFormData((prevFormData) => ({
       ...prevFormData,

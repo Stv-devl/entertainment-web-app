@@ -134,3 +134,7 @@ export interface btnTrendingProps {
 export type linkWrapperProp = {
   pathname: string;
 };
+
+export interface IconBookmarkedProps {
+  isSelected?: boolean;
+}

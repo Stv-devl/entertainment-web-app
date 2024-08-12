@@ -27,7 +27,9 @@ const useBookmarked = (): UseBookmarkedReturn => {
    */
   const handleToggleBookmark = useCallback(
     async (movieTitle: string) => {
-      await toggleBookmark(movieTitle);
+      if (movieTitle) {
+        await toggleBookmark(movieTitle);
+      }
     },
     [toggleBookmark]
   );

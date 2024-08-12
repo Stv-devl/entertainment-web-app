@@ -1,4 +1,5 @@
 import '../global.css';
+import React from 'react';
 import Banner from '../component/banner/Banner';
 
 export const metadata = {

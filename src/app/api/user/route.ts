@@ -4,14 +4,13 @@ import path from 'path';
 import { Users } from '@/types/types';
 
 const filePath = path.join(process.cwd(), 'data', 'user.json');
-let users: Users[] = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Users[];
+const users: Users[] = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Users[];
 
 /**
  * Handles GET requests to retrieve the list of users.
- * @param {Request} request - The incoming HTTP request object.
  * @returns {NextResponse} A response containing the list of users in JSON format.
  */
-export async function GET(request: Request): Promise<NextResponse> {
+export async function GET(): Promise<NextResponse> {
   return NextResponse.json(users);
 }
 

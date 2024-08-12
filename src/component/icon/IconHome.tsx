@@ -1,12 +1,16 @@
 import React from 'react';
+import { IconBookmarkedProps } from '@/types/types';
 
 /**
  * Renders a home icon with dynamic color based on selection state.
  * The icon changes color when selected and includes a hover effect when not selected.
+ * @param {IconBookmarkedProps} props - The props object containing the `isSelected` property.
  * @returns {JSX.Element} The home icon component.
  */
 
-const IconHome = ({ isSelected = false }): JSX.Element => {
+const IconHome: React.FC<IconBookmarkedProps> = ({
+  isSelected = false,
+}: IconBookmarkedProps): JSX.Element => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

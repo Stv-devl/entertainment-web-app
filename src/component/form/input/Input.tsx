@@ -1,6 +1,6 @@
 'use client';
+import React, { ChangeEvent } from 'react';
 import { InputProps } from '@/types/types';
-import { ChangeEvent } from 'react';
 
 /**
  * Renders an input field with dynamic border styling and optional error message.

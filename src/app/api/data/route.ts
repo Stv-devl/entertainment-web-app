@@ -3,11 +3,8 @@ import data from '../../../../data/data.json';
 
 /**
  * Handles GET requests to fetch JSON data.
-
- * @param {Request} request - The incoming HTTP request object.
  * @returns {NextResponse} A JSON response containing the data.
  */
-
-export async function GET(request: Request) {
+export async function GET(): Promise<NextResponse> {
   return NextResponse.json(data);
 }

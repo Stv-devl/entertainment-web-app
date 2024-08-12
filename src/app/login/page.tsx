@@ -56,7 +56,8 @@ const Login = (): JSX.Element => {
             />
           </div>
           <span className="form-error text-[#FC4747] ">
-            {loginErrors && `We dont find your informations in our database`}
+            {loginErrors &&
+              `We don&apos;t find your information in our database`}
           </span>
           <button
             type="submit"
@@ -65,7 +66,7 @@ const Login = (): JSX.Element => {
             Login to your account
           </button>
           <p className="text-base px-[5%] sm:px-[10%]">
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <Link href="/signup">
               <span className="text-[#FC4747] text-base ml-[5px]">Sign up</span>
             </Link>
