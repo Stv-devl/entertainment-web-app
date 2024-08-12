@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import useMediaStore from '@/stores/useMediaStore';
+import { UseBookmarkedReturn } from '@/types/types';
 
 /**
  * Custom hook for managing bookmarked media items.
@@ -9,7 +10,7 @@ import useMediaStore from '@/stores/useMediaStore';
  * - `handleToggleBookmark`: Function to toggle the bookmark status of a media item.
  */
 
-const useBookmarked = (): object => {
+const useBookmarked = (): UseBookmarkedReturn => {
   const { user, toggleBookmark } = useMediaStore();
 
   const [bookmarkedItems, setBookmarkedItems] = useState<string[]>([]);

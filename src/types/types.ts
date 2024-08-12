@@ -87,6 +87,11 @@ export interface CardBookmarkedProps {
   onToggleBookmark: (title: string) => void;
 }
 
+export interface UseBookmarkedReturn {
+  bookmarkedItems: string[];
+  handleToggleBookmark: (movieTitle: string) => Promise<void>;
+}
+
 export interface IsBookmarked {
   isBookmarked: boolean;
 }
