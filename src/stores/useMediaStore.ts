@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Media, Users } from '../types/types';
+import { Media, UpdateBookmarkResponse, Users } from '../types/types';
 import apiService from '../services/apiDatas';
 import updateBookmark from '../services/apiBookmark';
 import useAuthStore from './useAuthStore';
@@ -66,16 +66,20 @@ const useMediaStore = create<MediaDataState>((set, get) => ({
     if (!user) return;
 
     try {
-      const updatedUser = await updateBookmark(user.id, movieTitle);
-      if (updatedUser) {
-        const bookmarked = media.filter((item) =>
-          updatedUser.bookmarkedItems.includes(item.title)
-        );
-        set({
-          user: updatedUser,
-          bookmarked,
-        });
-      }
+      const response: UpdateBookmarkResponse = await updateBookmark(
+        user.id,
+        movieTitle
+      );
+      const bookmarkedItems = response.bookmarkedItems ?? [];
+      const updatedMedia = media.map((item) => ({
+        ...item,
+        isBookmarked: bookmarkedItems.includes(item.title),
+      }));
+      set({
+        media: updatedMedia,
+        bookmarked: updatedMedia.filter((item) => item.isBookmarked),
+        user: { ...user, bookmarkedItems },
+      });
     } catch (error) {
       console.error('Error toggling bookmark:', error);
     }
