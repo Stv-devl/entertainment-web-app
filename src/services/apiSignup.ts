@@ -23,16 +23,16 @@ const apiSignup = async ({
       body: JSON.stringify({ id, email, password, username, bookmarkedItems }),
     });
 
-    if (response.ok) {
-      const data = await response.json();
-      console.log('Login successful', data);
-      return data;
-    } else {
-      console.error('Login failed with status', response.status);
-      throw new Error('Login failed');
+    if (!response.ok) {
+      const errorDetails = await response.text();
+      console.error('Signup failed with status', response.status, errorDetails);
+      throw new Error(`Signup failed: ${errorDetails}`);
     }
+    const data = await response.json();
+    console.log('Signup successful', data);
+    return data;
   } catch (error) {
-    console.error('Error during login:', error);
+    console.error('Error during signup:', error);
     throw error;
   }
 };

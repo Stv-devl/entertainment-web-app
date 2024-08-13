@@ -21,7 +21,8 @@ const updateBookmark = async (
     });
 
     if (!response.ok) {
-      throw new Error('Failed to update bookmark');
+      const errorDetails = await response.text();
+      throw new Error(`Failed to update bookmark: ${errorDetails}`);
     }
 
     return (await response.json()) as UpdateBookmarkResponse;
