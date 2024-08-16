@@ -36,7 +36,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [frontend Mentor solution](https://www.frontendmentor.io/solutions/)
+- Solution URL: [frontend Mentor solution](https://www.frontendmentor.io/solutions/entertainment-web-app-solution---full-stack---nextjs-and-mongodb-cRzScjLKgk)
 - Live Site URL: [Live site](https://entertainment-web-app-five.vercel.app/)
 
 ## My process
