@@ -28,7 +28,7 @@ const fetchData = async <T>(url: string): Promise<T> => {
 const apiService = async (): Promise<{ media: Media[]; users: Users[] }> => {
   try {
     const [usersData, mediaData] = await Promise.all([
-      fetchData<Users[]>(`${process.env.NEXT_PUBLIC_API_URL}/user`),
+      fetchData<Users[]>(`${process.env.NEXT_PUBLIC_API_URL}/users`),
       fetchData<Media[]>(`${process.env.NEXT_PUBLIC_API_URL}/data`),
     ]);
 

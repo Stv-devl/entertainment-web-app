@@ -8,19 +8,18 @@ import { Users } from '@/types/types';
  */
 
 const apiSignup = async ({
-  id,
   email,
   password,
   username,
   bookmarkedItems,
 }: Users): Promise<Users> => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ id, email, password, username, bookmarkedItems }),
+      body: JSON.stringify({ email, password, username, bookmarkedItems }),
     });
 
     if (!response.ok) {

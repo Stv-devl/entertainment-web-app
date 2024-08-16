@@ -5,6 +5,7 @@ import LegendWrapper from './cardElements/CardLegend';
 import Play from './cardElements/CardPlay';
 import CardBookmarked from './cardElements/CardBookmarked';
 import useIsBookmarked from '@/hook/dataSync/useBookmarked';
+import Image from 'next/image';
 
 /**
  * The TrendingCards component displays a carousel of trending media items.
@@ -49,9 +50,11 @@ const TrendingCards: React.FC<MediaProps> = ({ media }) => {
                 onMouseLeave={() => setHoverIndex(null)}
               >
                 {item.thumbnail?.trending && (
-                  <img
+                  <Image
                     src={item.thumbnail.trending.small}
                     alt={`${item.title} ${item.category}`}
+                    width={480}
+                    height={280}
                     className="object-cover rounded-lg"
                   />
                 )}

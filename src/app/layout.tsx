@@ -17,10 +17,6 @@ export default function RootLayout({
       <head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
-          rel="stylesheet"
-        />
       </head>
       <body className="h-screen w-full flex flex-col bg-[#10141E]  text-white font-outfit text-[15px] font-light  ">
         <div className="sm:h-[2%]"></div>

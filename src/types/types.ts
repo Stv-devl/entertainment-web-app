@@ -23,7 +23,7 @@ export interface Users {
   username: string;
   email: string;
   password: string;
-  id: string;
+  _id: string;
   bookmarkedItems?: string[];
 }
 
@@ -51,6 +51,7 @@ export interface FormDataSignUp {
   email: string;
   password: string;
   repeat: string;
+  _id: string;
   bookmarkedItems: [];
 }
 

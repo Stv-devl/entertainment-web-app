@@ -11,6 +11,9 @@ export async function POST(): Promise<NextResponse> {
     maxAge: -1,
     httpOnly: true,
     secure: true,
+    path: '/',
+    sameSite: 'strict',
   });
+
   return response;
 }

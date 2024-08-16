@@ -1,6 +1,5 @@
 import { FormEvent, useCallback, useState } from 'react';
 import apiSignup from '../../services/apiSignup';
-import { v4 as uuidv4 } from 'uuid';
 import { FormDataSignUp, UseSignUpReturn } from '@/types/types';
 import useValidation from '../validation/useValidation';
 import { useRouter } from 'next/navigation';
@@ -22,6 +21,7 @@ const useSignUp = (): UseSignUpReturn => {
     email: '',
     password: '',
     repeat: '',
+    _id: '',
     bookmarkedItems: [],
   });
 
@@ -56,7 +56,6 @@ const useSignUp = (): UseSignUpReturn => {
 
     try {
       const newUser = await apiSignup({
-        id: uuidv4(),
         ...formData,
       });
       router.push('/login');

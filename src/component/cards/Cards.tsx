@@ -4,6 +4,7 @@ import LegendWrapper from './cardElements/CardLegend';
 import Play from './cardElements/CardPlay';
 import CardBookmarked from './cardElements/CardBookmarked';
 import useIsBookmarked from '@/hook/dataSync/useBookmarked';
+import Image from 'next/image';
 
 /**
  * The Cards component renders a grid of media cards, each displaying a media item with its thumbnail, title, category, and bookmark status.
@@ -30,9 +31,11 @@ const Cards: React.FC<MediaProps> = ({ media }: MediaProps): JSX.Element => {
               onMouseLeave={() => setHoverIndex(null)}
             >
               {data.thumbnail?.regular && (
-                <img
+                <Image
                   src={data.thumbnail.regular.small}
                   alt={`${data.title} ${data.category}`}
+                  width={328}
+                  height={220}
                   className="w-full h-auto rounded-[8px]"
                 />
               )}

@@ -12,7 +12,7 @@ const updateBookmark = async (
   movieTitle: string
 ): Promise<UpdateBookmarkResponse> => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

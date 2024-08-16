@@ -42,7 +42,8 @@ const useMediaStore = create<MediaDataState>((set, get) => ({
     set({ loading: true, error: null });
     try {
       const { media, users } = await apiService();
-      const user = users.find((u) => u.id === userId) || null;
+
+      const user = users.find((u) => u._id === userId) || null;
       const bookmarked = user
         ? media.filter((item) => user.bookmarkedItems!.includes(item.title))
         : [];
@@ -67,7 +68,7 @@ const useMediaStore = create<MediaDataState>((set, get) => ({
 
     try {
       const response: UpdateBookmarkResponse = await updateBookmark(
-        user.id,
+        user._id,
         movieTitle
       );
       const bookmarkedItems = response.bookmarkedItems ?? [];
