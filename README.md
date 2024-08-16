@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Mentor - Todo app solution
 
-## Getting Started
+This is a solution to the [Entertainment-web-app- on Frontend Mentor](https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Link](#link)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [Versions](#versions)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+- [Author](#author)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### The challenge
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Users should be able to:
 
-## Learn More
+- Navigate between Home, Movies, TV Series, and Bookmarked Shows pages
+- Add/Remove bookmarks from all movies and TV series
+- Search for relevant shows on all pages
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Build this project as a full-stack application
+- If you're building a full-stack app, we provide authentication screen (sign-up/login) designs if you'd like to create an auth flow
 
-To learn more about Next.js, take a look at the following resources:
+### Screenshot
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![](./Screenshot.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Links
 
-## Deploy on Vercel
+- Solution URL: [frontend Mentor solution](https://www.frontendmentor.io/solutions/)
+- Live Site URL: [Live site](https://entertainment-web-app-five.vercel.app/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## My process
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Built with
+
+- Tailwind Css
+- Next.js
+- Typescript
+- Zustand store
+
+### Version
+
+- node.js : 20.11.0
+- "bcrypt": "^5.1.1",
+- "cookies": "^0.9.1",
+- "dotenv": "^16.4.5",
+- "jose": "^5.6.3",
+- "js-cookie": "^3.0.5",
+- "mongodb": "^6.8.0",
+- "next": "^14.2.4",
+- "react": "^18.3.1",
+- "react-dom": "^18.3.1",
+- "react-responsive": "^10.0.0",
+- "zustand": "^4.5.4"
+- tailwindcss": "^3.4.4",
+- typescript": "^5"
+
+### What I learned
+
+- learn to use next.js
+- learn typescript
+- learn the authentification with https only
+- learn about Zustand store
+- learn backend with Next.js api route and MongoDp
+- learn Tailwind Css
+
+### Continued development
+
+- Practice backend with MongoDb
+- next time use library for Auth
+- Practice typescript
+
+## Author
+
+- Github- [Github](https://github.com/Stv-devl)
+- Frontend Mentor - [@Stv-devl](https://www.frontendmentor.io/profile/Stv-devl)
