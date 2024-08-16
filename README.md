@@ -9,6 +9,7 @@ This is a solution to the [Entertainment-web-app- on Frontend Mentor](https://ww
   - [Screenshot](#screenshot)
   - [Link](#link)
 - [My process](#my-process)
+  - [Try](#try)
   - [Built with](#built-with)
   - [Versions](#versions)
   - [What I learned](#what-i-learned)
@@ -39,6 +40,18 @@ Users should be able to:
 - Live Site URL: [Live site](https://entertainment-web-app-five.vercel.app/)
 
 ## My process
+
+### Try
+
+You can login with the user "test" or signup :
+
+```bash
+email : test@test.com
+```
+
+```bash
+password : 0000
+```
 
 ### Built with
 
