@@ -6,6 +6,7 @@ import Play from './cardElements/CardPlay';
 import CardBookmarked from './cardElements/CardBookmarked';
 import useIsBookmarked from '@/hook/dataSync/useBookmarked';
 import Image from 'next/image';
+import { preload } from 'react-dom';
 
 /**
  * The TrendingCards component displays a carousel of trending media items.
@@ -56,6 +57,7 @@ const TrendingCards: React.FC<MediaProps> = ({ media }) => {
                     width={480}
                     height={280}
                     className="object-cover rounded-lg"
+                    loading="eager"
                   />
                 )}
 
