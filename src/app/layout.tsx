@@ -10,6 +10,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta charSet="utf-8" />
         <title>entertainment-web-app</title>
         <meta name="description" content="video app" />
       </head>
