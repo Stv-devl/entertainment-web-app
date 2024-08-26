@@ -18,7 +18,7 @@ const Login = (): JSX.Element => {
   const { handleSubmit, handleChange, formData, loginErrors } = useLogin();
 
   return (
-    <section className="flex flex-col items-center gap-[83px] min-h-screen">
+    <section className=" flex flex-col items-center gap-[83px] min-h-screen">
       <Image
         className="w-auto h-auto mt-[5%] "
         src="/assets/logo.svg"

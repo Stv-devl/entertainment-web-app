@@ -34,7 +34,7 @@ const BookMarked = (): JSX.Element => {
   if (error) return <Error />;
 
   return (
-    <section className="h-screen">
+    <section className="h-screen pl-[2%] xl:ml-[156px] xl:h-[97.5vh]">
       <Search
         searchBar={searchBar}
         handleChange={handleChange}

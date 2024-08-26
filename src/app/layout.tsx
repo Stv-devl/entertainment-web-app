@@ -18,9 +18,7 @@ export default function RootLayout({
         <div className="sm:h-[2%]"></div>
         <Banner />
         <div className="xl:hidden h-[1.6rem]"></div>
-        <main className="pl-[2%] xl:ml-[156px] xl:h-[97.5vh] overflow-y-auto  ">
-          {children}
-        </main>
+        <main className="overflow-y-auto  ">{children}</main>
       </body>
     </html>
   );
