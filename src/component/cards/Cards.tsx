@@ -38,6 +38,7 @@ const Cards: React.FC<MediaProps> = ({ media }: MediaProps): JSX.Element => {
                   height={220}
                   className="w-full h-auto rounded-[8px]"
                   loading="eager"
+                  priority
                 />
               )}
               <div

@@ -55,8 +55,9 @@ const TrendingCards: React.FC<MediaProps> = ({ media }) => {
                     alt={`${item.title} ${item.category}`}
                     width={480}
                     height={280}
-                    className="object-cover rounded-lg"
+                    className="size full object-cover rounded-lg"
                     loading="eager"
+                    priority
                   />
                 )}
 

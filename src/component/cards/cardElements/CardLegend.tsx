@@ -34,6 +34,7 @@ const CardLegend: React.FC<MediaProps> = ({
             alt={`category movie icon`}
             width={12}
             height={12}
+            priority
             className="w-[12px] h-[12px]"
           />
           <p className="text-xs sm:text-base">{media.category}</p>

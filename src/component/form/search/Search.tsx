@@ -23,6 +23,7 @@ const Search: React.FC<SearchProps> = ({
         alt="search bar icon"
         width={32}
         height={32}
+        priority
         className="object-contain sm:w-[32px] sm:h-[32px] w-[24px] h-[24px]"
       />
       <div className="w-[100%]">

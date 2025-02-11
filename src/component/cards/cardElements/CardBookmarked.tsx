@@ -31,6 +31,7 @@ const CardBookmarked: React.FC<CardBookmarkedProps> = ({
         }`}
         width={12}
         height={14}
+        priority
         className={`transition duration-500 group-hover:invert-0 group-hover:brightness-0 w-[12px] h-[14px] ${
           !isBookmarked ? 'filter invert' : ''
         }`}

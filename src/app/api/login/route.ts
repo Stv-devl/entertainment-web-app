@@ -3,7 +3,11 @@ import bcrypt from 'bcrypt';
 import { SignJWT } from 'jose';
 import { clientPromise } from '../../../../lib/mongodb';
 
-const secretKey = new TextEncoder().encode(process.env.SECRET_KEY as string);
+const secretKey = process.env.SECRET_KEY
+  ? new TextEncoder().encode(process.env.SECRET_KEY)
+  : (() => {
+      throw new Error('SECRET_KEY is not defined in environment variables');
+    })();
 
 /**
  * Handles POST requests for user authentication.
